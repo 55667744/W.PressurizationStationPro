@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{75DA7825-58C8-4F04-869E-DA0BE2002D04}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>W.PressurizationStationPro</RootNamespace>
+    <AssemblyName>W.PressurizationStationPro</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="1.界面层\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="1.界面层\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="1.界面层\MeterShow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="1.界面层\MeterShow.Designer.cs">
+      <DependentUpon>MeterShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="5.工具库\IniConfigHelper.cs" />
+    <Compile Include="FrmMsgWithAck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMsgWithAck.Designer.cs">
+      <DependentUpon>FrmMsgWithAck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMsgNoAck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMsgNoAck.Designer.cs">
+      <DependentUpon>FrmMsgNoAck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmParamSre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmParamSre.Designer.cs">
+      <DependentUpon>FrmParamSre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="3.通信层\S7NetLib.cs" />
+    <Compile Include="4.实体层\SysInfo.cs" />
+    <Compile Include="SysInfoService.cs" />
+    <EmbeddedResource Include="1.界面层\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="1.界面层\MeterShow.resx">
+      <DependentUpon>MeterShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMsgWithAck.resx">
+      <DependentUpon>FrmMsgWithAck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMsgNoAck.resx">
+      <DependentUpon>FrmMsgNoAck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmParamSre.resx">
+      <DependentUpon>FrmParamSre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\xbd.ControlLib\xbd.ControlLib.csproj">
+      <Project>{d95ed733-cf03-4636-a414-3882d3fa8cab}</Project>
+      <Name>xbd.ControlLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xbd.DataConvertLib\xbd.DataConvertLib.csproj">
+      <Project>{867237ad-51f4-4ca5-ad32-d68844cc9101}</Project>
+      <Name>xbd.DataConvertLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xbd.s7netplus\xbd.s7netplus.csproj">
+      <Project>{87dca77d-a82c-4ccd-8792-5e6cfb0cc765}</Project>
+      <Name>xbd.s7netplus</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="2.数据层\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
