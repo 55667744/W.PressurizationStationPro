@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="xbdValve2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="valve_Out.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAtQAAAKoCAYAAABXzWhKAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wQAADsEBuJFr7QAAX49JREFUeF7t3Qd4XGlh7/9ld1lY2KUtvWNqaAFChwQcUsklJBduSLmEdf4kJCEh
@@ -532,7 +532,7 @@
         ApSrGmIAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="xbdValve1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="valve_In.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAtQAAAKoCAYAAABXzWhKAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wQAADsEBuJFr7QAAX49JREFUeF7t3Qd4XGlh7/9ld1lY2KUtvWNqaAFChwQcUsklJBduSLmEdf4kJCEh
@@ -946,7 +946,7 @@
         ApSrGmIAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="xbdState3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="led_SysAlarmState.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAAAqFJREFUOE99zE1PE1EYxfE7nb4wlNYOLYLVgYEZaJUXRUAUrJVXURERK4pok1pi
@@ -963,7 +963,7 @@
         WmccrVND6xQeYQlvbT//UxVDCCvyl6A8+pff4nJQRxpQxCIAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="xbdState2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="led_RunState.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAAAqFJREFUOE99zE1PE1EYxfE7nb4wlNYOLYLVgYEZaJUXRUAUrJVXURERK4pok1pi
@@ -980,10 +980,10 @@
         WmccrVND6xQeYQlvbT//UxVDCCvyl6A8+pff4nJQRxpQxCIAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="xbdState1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="led_PLCState.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAAAqFJREFUOE99zE1PE1EYxfE7nb4wlNYOLYLVgYEZaJUXRUAUrJVXURERK4pok1pi
+        DAAACwwBP0AiyAAAAqFJREFUOE99zE1PE1EYxfE7nb4wlNYOLYLVgYEZaJUXRUAUrJVXURERK4pok1pi
         2NYYP4Ix0Zi4cuHCPY0Lv4EL+QAu3Bi6c+GSRncm/s2dOxVJxMUv5yb3PEeQ2RT/oZPZTJPZzJLZNOl7
         KPbplTY8e0f7S+P0PnxH78YPejfwuFL5K275OW65HbckPM4DgVMSatGVypKBW36LW/qFWwLnATgyS9Aj
         FZXu4ne6729gFwX2usdb8/SUmugpfqBbFu8rdhHsdbDv+bkOXXehaw06pTtPsNYE1qrwF+/JfPWntFcE

@@ -19,7 +19,7 @@ namespace W.PressurizationStationPro
         /// <summary>
         /// IP地址
         /// </summary>
-        public string  IPAddress { get; set; }
+        public string  IPAddress { get; set; }="127.0.0.1";
 
         /// <summary>
         /// 机架号
