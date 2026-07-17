@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using xbd.DataConvertLib;
@@ -12,7 +13,7 @@ namespace W.PressurizationStationPro
     /// <summary>
     /// 业务类       核心：方法
     /// </summary>
-    internal class PlcDataservice
+    public class PlcDataservice
     {
        /// <summary>
        /// 第一次扫描的标志位
@@ -31,7 +32,7 @@ namespace W.PressurizationStationPro
         public int AllowErrorTimes { get; set; } = 3;
 
 
-        public S7NetLib s7Net;    //私有字段：PLC通信对象
+        private S7NetLib s7Net = null;   //私有字段：PLC通信对象
 
         ///共有方法：建立连接
         public OperateResult connect(SysInfo sysInfo)
@@ -106,8 +107,118 @@ namespace W.PressurizationStationPro
             }
 
         }
+        /// <summary>
+        /// 1号进水泵控制方法
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool InPump1Control(bool value)
+        {
+            string startAddress = "DB1.DBX0.0";
+            string stopAddress = "DB1.DBX0.1";
+            string controlAddress=value? startAddress : stopAddress;
+            bool result=s7Net.WriteVariable(controlAddress, true).IsSuccess;
+            Thread.Sleep(50);
+            result&=s7Net.WriteVariable(controlAddress, false).IsSuccess;
+            return result;
+        }
+
+        /// <summary>
+        /// 2号进水泵控制方法
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool InPump2Control(bool value)
+        {
+            string startAddress = "DB1.DBX0.2";
+            string stopAddress = "DB1.DBX0.3";
+            string controlAddress = value ? startAddress : stopAddress;
+            bool result = s7Net.WriteVariable(controlAddress, true).IsSuccess;
+            Thread.Sleep(50);
+            result &= s7Net.WriteVariable(controlAddress, false).IsSuccess;
+            return result;
+        }
+
+        /// <summary>
+        /// 1号循环泵控制方法
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool CirclePump1Control(bool value)
+        {
+            string startAddress = "DB1.DBX0.4";
+            string stopAddress = "DB1.DBX0.5";
+            string controlAddress = value ? startAddress : stopAddress;
+            bool result = s7Net.WriteVariable(controlAddress, true).IsSuccess;
+            Thread.Sleep(50);
+            result &= s7Net.WriteVariable(controlAddress, false).IsSuccess;
+            return result;
+        }
 
 
+        /// <summary>
+        /// 2号循环泵控制方法
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool CirclePump2Control(bool value)
+        {
+            string startAddress = "DB1.DBX0.6";
+            string stopAddress = "DB1.DBX0.7";
+            string controlAddress = value ? startAddress : stopAddress;
+            bool result = s7Net.WriteVariable(controlAddress, true).IsSuccess;
+            Thread.Sleep(50);
+            result &= s7Net.WriteVariable(controlAddress, false).IsSuccess;
+            return result;
+        }
+
+        /// <summary>
+        /// 系统复位方法方法
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool SysReset()
+        {
+           
+            string controlAddress = "DB1.DBX0.101.4";
+           
+            bool result = s7Net.WriteVariable(controlAddress, true).IsSuccess;
+            Thread.Sleep(50);
+            result &= s7Net.WriteVariable(controlAddress, false).IsSuccess;
+            return result;
+        }
+
+        /// <summary>
+        /// 进水阀控制
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool ValveInControl(bool value)
+        {
+            string startAddress = "DB1.DBX101.0";
+            string stopAddress = "DB1.DBX101.1";
+            string controlAddress = value ? startAddress : stopAddress;
+            bool result = s7Net.WriteVariable(controlAddress, true).IsSuccess;
+            Thread.Sleep(50);
+            result &= s7Net.WriteVariable(controlAddress, false).IsSuccess;
+            return result;
+        }
+
+        /// <summary>
+        /// 出水阀控制
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool ValveOutControl(bool value)
+        {
+            string startAddress = "DB1.DBX101.2";
+            string stopAddress = "DB1.DBX101.3";
+            string controlAddress = value ? startAddress : stopAddress;
+            bool result = s7Net.WriteVariable(controlAddress, true).IsSuccess;
+            Thread.Sleep(50);
+            result &= s7Net.WriteVariable(controlAddress, false).IsSuccess;
+            return result;
+        }
 
     }
 }

@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using xbd.ControlLib;
+using Timer = System.Windows.Forms.Timer;
 
 namespace W.PressurizationStationPro
 {
@@ -18,9 +21,33 @@ namespace W.PressurizationStationPro
         public FrmMain()
         {
             InitializeComponent();
-           // infoService.SetSysInfoToPath(new SysInfo(), sysInfoPath);  测试代码
+
+            this.updateTimer.Interval = 500;
+            this.updateTimer.Tick += updataTimer_Tick;
+            this.updateTimer.Start();
+
+
+            // infoService.SetSysInfoToPath(new SysInfo(), sysInfoPath);  测试代码
            this.Load += FrmMain_Load;
            this.FormClosing += FrmMain_FormClosing;
+        }
+
+        private void updataTimer_Tick(object sender, EventArgs e)
+        {
+            this.lbl_Time.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+ " "+
+            new CultureInfo("zh-CN").DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek);
+            this.led_PLCState.State = dataService.isConnected;
+
+            //如果大于0才启用该功能
+            if (sysInfo.ScreenTime > 0)
+            {
+                Program.TickCount++;
+                if (sysInfo.ScreenTime*1000/this.updateTimer.Interval==Program.TickCount)
+                {
+                    //锁屏调用Windows底层API
+                    LockWorkStation();
+                }
+            }
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -36,6 +63,12 @@ namespace W.PressurizationStationPro
             {
                 new FrmMsgNoAck("系统配置加载失败","系统配置").ShowDialog();
                 return;
+            }
+            //锁屏处理
+            if(sysInfo.ScreenTime > 0)
+            {
+                messageFilter = new MessageFilter();
+                Application.AddMessageFilter(messageFilter);
             }
 
             cts=new CancellationTokenSource();
@@ -132,10 +165,16 @@ namespace W.PressurizationStationPro
 
 
 
+        private Timer updateTimer = new Timer();
 
+        /// <summary>
+        /// 第一次扫描标志位
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private bool FirsScan=true;
 
-
-
+        private MessageFilter messageFilter;
 
 
         private void btn_ParamSet_Click(object sender, EventArgs e)
@@ -164,6 +203,15 @@ namespace W.PressurizationStationPro
 
             else
             {
+                ///第一次扫描执行，以后就不执行了  
+                if (FirsScan)
+                {
+                    this.toggle_Pump1.Checked=plcData.InPump1State;
+                    this.toggle_Pump2.Checked = plcData.InPump2State;
+                    FirsScan = false;
+                }
+
+
                 // 左侧仪表
                 this.lbl_PressureIn.Text = plcData.PressureIn.ToString("f2") + " bar";
                 this.lbl_PressureOut.Text = plcData.PressureOut.ToString("f2") + " bar";
@@ -180,7 +228,7 @@ namespace W.PressurizationStationPro
 
                 // 系统状态
                 this.led_RunState.State = plcData.SysRunState;
-                this.led_SysAlarmState.State = plcData.SysAlarmState;
+                this.led_SysAlarmState.State =!plcData.SysAlarmState;
 
 
                 // 系统参数
@@ -219,9 +267,85 @@ namespace W.PressurizationStationPro
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)  //退出按钮
         {
             this.Close();
         }
+
+        private void btn_Pump1_Click(object sender, EventArgs e)
+        {
+            dataService.CirclePump2Control(this.btn_Pump2.Text == "启动");
+        }
+
+        private void btn_Pump2_Click(object sender, EventArgs e)
+        {
+            dataService.CirclePump2Control(this.btn_Pump2.Text == "启动");
+        }
+
+        private void toggle_Pump1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (dataService.InPump1Control(this.toggle_Pump1.Checked) == false)
+            {
+                this.toggle_Pump1.CheckedChanged -= toggle_Pump1_CheckedChanged;
+                this.toggle_Pump1.Checked = !this.toggle_Pump1.Checked;
+                this.toggle_Pump1.CheckedChanged += toggle_Pump1_CheckedChanged;
+            }
+
+        }
+
+        private void toggle_Pump2_CheckedChanged(object sender, EventArgs e)
+        {
+         
+            if (dataService.InPump2Control(this.toggle_Pump2.Checked) == false)
+            {
+                this.toggle_Pump2.CheckedChanged -= toggle_Pump2_CheckedChanged;
+                this.toggle_Pump2.Checked = !this.toggle_Pump2.Checked;
+                this.toggle_Pump2.CheckedChanged += toggle_Pump2_CheckedChanged;
+            }
+  
+        }
+
+        private void btu_SysReset_Click(object sender, EventArgs e)
+        {
+            dataService.SysReset();
+        }
+
+        private void CommonValve_DoubleClick(object sender, EventArgs e)
+        {
+            if(sender is xbdValve valve)
+            {
+                FrmValveControl   frmValveControl=new FrmValveControl(valve.ValveName,valve.State,this.dataService);
+
+
+                frmValveControl.ShowDialog();
+
+
+            }
+        }
+
+        #region 系统锁屏
+
+        [DllImport("user32")]
+        public static extern bool LockWorkStation();
+
+        #endregion
     }
+
+
+    #region 消息筛选器 
+    public class MessageFilter : IMessageFilter
+    {
+        public bool PreFilterMessage(ref Message m)
+        {
+            //如果检测到有鼠标或则键盘的消息，则使计数为0.....
+            if (m.Msg == 0x0200 || m.Msg == 0x0201 || m.Msg == 0x0204 || m.Msg == 0x0207)
+            {
+                Program.TickCount = 0;
+            }
+            return false;
+        }
+    }
+    #endregion
+
+
 }

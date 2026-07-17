@@ -18,5 +18,9 @@ namespace W.PressurizationStationPro
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmMain());
         }
+        /// <summary>
+        /// 锁屏时间的滴答次数
+        /// </summary>
+        public static int TickCount { get; set; }
     }
 }

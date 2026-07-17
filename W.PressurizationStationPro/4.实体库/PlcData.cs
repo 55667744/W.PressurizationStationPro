@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace W.PressurizationStationPro
 {
-    partial  class PlcData
+    public partial class PlcData
     {
         /// <summary>
         /// plc数据实体类        核心：属性
