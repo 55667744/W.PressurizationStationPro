@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using xbd.ControlLib;
+using Timer = System.Windows.Forms.Timer;
 
 namespace W.PressurizationStationPro
 {
@@ -18,11 +20,22 @@ namespace W.PressurizationStationPro
         public FrmMain()
         {
             InitializeComponent();
-           // infoService.SetSysInfoToPath(new SysInfo(), sysInfoPath);  测试代码
+
+            this.updateTimer.Interval = 500;
+            this.updateTimer.Tick += updataTimer_Tick;
+            this.updateTimer.Start();
+
+
+            // infoService.SetSysInfoToPath(new SysInfo(), sysInfoPath);  测试代码
            this.Load += FrmMain_Load;
            this.FormClosing += FrmMain_FormClosing;
         }
 
+        private void updataTimer_Tick(object sender, EventArgs e)
+        {
+            this.lbl_Time.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+ " "+
+            new CultureInfo("zh-CN").DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek);
+        }
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
            cts?.Cancel();
@@ -132,7 +145,7 @@ namespace W.PressurizationStationPro
 
 
 
-
+        private Timer updateTimer = new Timer();
 
 
 
@@ -180,7 +193,7 @@ namespace W.PressurizationStationPro
 
                 // 系统状态
                 this.led_RunState.State = plcData.SysRunState;
-                this.led_SysAlarmState.State = plcData.SysAlarmState;
+                this.led_SysAlarmState.State =!plcData.SysAlarmState;
 
 
                 // 系统参数
@@ -219,9 +232,62 @@ namespace W.PressurizationStationPro
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)  //退出按钮
         {
             this.Close();
         }
+
+        private void btn_Pump1_Click(object sender, EventArgs e)
+        {
+            dataService.CirclePump2Control(this.btn_Pump2.Text == "启动");
+        }
+
+        private void btn_Pump2_Click(object sender, EventArgs e)
+        {
+            dataService.CirclePump2Control(this.btn_Pump2.Text == "启动");
+        }
+
+        private void toggle_Pump1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (dataService.InPump1Control(this.toggle_Pump1.Checked) == false)
+            {
+                this.toggle_Pump1.CheckedChanged -= toggle_Pump1_CheckedChanged;
+                this.toggle_Pump1.Checked = !this.toggle_Pump1.Checked;
+                this.toggle_Pump1.CheckedChanged += toggle_Pump1_CheckedChanged;
+            }
+
+        }
+
+        private void toggle_Pump2_CheckedChanged(object sender, EventArgs e)
+        {
+         
+            if (dataService.InPump2Control(this.toggle_Pump2.Checked) == false)
+            {
+                this.toggle_Pump2.CheckedChanged -= toggle_Pump2_CheckedChanged;
+                this.toggle_Pump2.Checked = !this.toggle_Pump2.Checked;
+                this.toggle_Pump2.CheckedChanged += toggle_Pump2_CheckedChanged;
+            }
+  
+        }
+
+        private void btu_SysReset_Click(object sender, EventArgs e)
+        {
+            dataService.SysReset();
+        }
+
+        private void CommonValve_DoubleClick(object sender, EventArgs e)
+        {
+            if(sender is xbdValve valve)
+            {
+                FrmValveControl   frmValveControl=new FrmValveControl(valve.ValveName,valve.State,this.dataService);
+
+
+                frmValveControl.ShowDialog();
+
+
+            }
+        }
+
+
     }
 }
