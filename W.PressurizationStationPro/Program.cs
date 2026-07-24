@@ -22,5 +22,10 @@ namespace W.PressurizationStationPro
         /// 锁屏时间的滴答次数
         /// </summary>
         public static int TickCount { get; set; }
+
+        /// <summary>
+        /// 当前登录的用户
+        /// </summary>
+        public static SysAmin CurrentUser;
     }
 }

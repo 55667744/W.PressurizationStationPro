@@ -106,7 +106,7 @@
             this.cmb_CPUType.FormattingEnabled = true;
             this.cmb_CPUType.Location = new System.Drawing.Point(116, 176);
             this.cmb_CPUType.Name = "cmb_CPUType";
-            this.cmb_CPUType.Size = new System.Drawing.Size(137, 28);
+            this.cmb_CPUType.Size = new System.Drawing.Size(137, 36);
             this.cmb_CPUType.TabIndex = 12;
             // 
             // cmb_Camera
@@ -114,7 +114,7 @@
             this.cmb_Camera.FormattingEnabled = true;
             this.cmb_Camera.Location = new System.Drawing.Point(447, 274);
             this.cmb_Camera.Name = "cmb_Camera";
-            this.cmb_Camera.Size = new System.Drawing.Size(96, 28);
+            this.cmb_Camera.Size = new System.Drawing.Size(96, 36);
             this.cmb_Camera.TabIndex = 12;
             // 
             // toggle_AutoStart
@@ -194,7 +194,7 @@
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(347, 276);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(106, 21);
+            this.label14.Size = new System.Drawing.Size(151, 30);
             this.label14.TabIndex = 8;
             this.label14.Text = "摄像头选择：";
             // 
@@ -202,14 +202,14 @@
             // 
             this.txt_Slot.Location = new System.Drawing.Point(116, 275);
             this.txt_Slot.Name = "txt_Slot";
-            this.txt_Slot.Size = new System.Drawing.Size(137, 26);
+            this.txt_Slot.Size = new System.Drawing.Size(137, 35);
             this.txt_Slot.TabIndex = 9;
             // 
             // txt_LogoffTime
             // 
             this.txt_LogoffTime.Location = new System.Drawing.Point(435, 230);
             this.txt_LogoffTime.Name = "txt_LogoffTime";
-            this.txt_LogoffTime.Size = new System.Drawing.Size(73, 26);
+            this.txt_LogoffTime.Size = new System.Drawing.Size(73, 35);
             this.txt_LogoffTime.TabIndex = 7;
             // 
             // label7
@@ -219,7 +219,7 @@
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(35, 276);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 21);
+            this.label7.Size = new System.Drawing.Size(105, 30);
             this.label7.TabIndex = 8;
             this.label7.Text = "插槽号：";
             // 
@@ -230,7 +230,7 @@
             this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Location = new System.Drawing.Point(347, 229);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(90, 21);
+            this.label13.Size = new System.Drawing.Size(128, 30);
             this.label13.TabIndex = 6;
             this.label13.Text = "注销时间：";
             // 
@@ -238,14 +238,14 @@
             // 
             this.txt_Rack.Location = new System.Drawing.Point(116, 228);
             this.txt_Rack.Name = "txt_Rack";
-            this.txt_Rack.Size = new System.Drawing.Size(137, 26);
+            this.txt_Rack.Size = new System.Drawing.Size(137, 35);
             this.txt_Rack.TabIndex = 7;
             // 
             // txt_ScreenTime
             // 
             this.txt_ScreenTime.Location = new System.Drawing.Point(435, 180);
             this.txt_ScreenTime.Name = "txt_ScreenTime";
-            this.txt_ScreenTime.Size = new System.Drawing.Size(73, 26);
+            this.txt_ScreenTime.Size = new System.Drawing.Size(73, 35);
             this.txt_ScreenTime.TabIndex = 5;
             // 
             // label8
@@ -255,7 +255,7 @@
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(35, 229);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(74, 21);
+            this.label8.Size = new System.Drawing.Size(105, 30);
             this.label8.TabIndex = 6;
             this.label8.Text = "机架号：";
             // 
@@ -266,7 +266,7 @@
             this.label16.ForeColor = System.Drawing.Color.White;
             this.label16.Location = new System.Drawing.Point(514, 232);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(19, 21);
+            this.label16.Size = new System.Drawing.Size(26, 30);
             this.label16.TabIndex = 4;
             this.label16.Text = "S";
             // 
@@ -277,7 +277,7 @@
             this.label15.ForeColor = System.Drawing.Color.White;
             this.label15.Location = new System.Drawing.Point(514, 183);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(19, 21);
+            this.label15.Size = new System.Drawing.Size(26, 30);
             this.label15.TabIndex = 4;
             this.label15.Text = "S";
             // 
@@ -288,7 +288,7 @@
             this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(347, 180);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(90, 21);
+            this.label12.Size = new System.Drawing.Size(128, 30);
             this.label12.TabIndex = 4;
             this.label12.Text = "息屏时间：";
             // 
@@ -299,7 +299,7 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(35, 180);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 21);
+            this.label6.Size = new System.Drawing.Size(128, 30);
             this.label6.TabIndex = 4;
             this.label6.Text = "CPU类型：";
             // 
@@ -307,7 +307,7 @@
             // 
             this.txt_IPAddress.Location = new System.Drawing.Point(116, 132);
             this.txt_IPAddress.Name = "txt_IPAddress";
-            this.txt_IPAddress.Size = new System.Drawing.Size(137, 26);
+            this.txt_IPAddress.Size = new System.Drawing.Size(137, 35);
             this.txt_IPAddress.TabIndex = 3;
             // 
             // label11
@@ -317,7 +317,7 @@
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(347, 133);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(90, 21);
+            this.label11.Size = new System.Drawing.Size(128, 30);
             this.label11.TabIndex = 2;
             this.label11.Text = "开机启动：";
             // 
@@ -339,7 +339,7 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(35, 133);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 21);
+            this.label5.Size = new System.Drawing.Size(103, 30);
             this.label5.TabIndex = 2;
             this.label5.Text = "IP地址：";
             // 
@@ -350,7 +350,7 @@
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(335, 67);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 22);
+            this.label10.Size = new System.Drawing.Size(127, 31);
             this.label10.TabIndex = 1;
             this.label10.Text = "▷系统参数";
             // 
@@ -386,7 +386,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(41, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 26);
+            this.label2.Size = new System.Drawing.Size(133, 39);
             this.label2.TabIndex = 1;
             this.label2.Text = "参数设置";
             // 
@@ -416,13 +416,13 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(23, 67);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 22);
+            this.label4.Size = new System.Drawing.Size(127, 31);
             this.label4.TabIndex = 1;
             this.label4.Text = "▷通讯参数";
             // 
             // FrmParamSre
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(614, 394);

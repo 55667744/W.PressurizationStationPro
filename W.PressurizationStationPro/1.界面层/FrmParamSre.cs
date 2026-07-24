@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,7 +43,7 @@ namespace W.PressurizationStationPro
 
             }
 
-              
+              this.toggle_AutoStart.CheckedChanged+=this.toggle_AutoStart_CheckedChanged;
 
 
         }
@@ -140,5 +141,35 @@ namespace W.PressurizationStationPro
         {
             this.Close();
         }
+
+        private void toggle_AutoStart_CheckedChanged(object sender, EventArgs e)
+        {
+            AutoStart(this.toggle_AutoStart.Checked);
+        }
+        #region 开机启动
+        /// <summary>  
+        /// 修改程序在注册表中的键值  
+        /// </summary>  
+        /// <param name="isAuto">true:开机启动,false:不开机自启</param> 
+        private void AutoStart(bool isAuto = true)
+        {
+            if (isAuto == true)
+            {
+                RegistryKey R_local = Registry.CurrentUser;
+                RegistryKey R_run = R_local.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+                R_run.SetValue("PressurizationStationPro", System.Windows.Forms.Application.ExecutablePath);
+                R_run.Close();
+                R_local.Close();
+            }
+            else
+            {
+                RegistryKey R_local = Registry.CurrentUser;
+                RegistryKey R_run = R_local.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+                R_run.DeleteValue("PressurizationStationPro", false);
+                R_run.Close();
+                R_local.Close();
+            }
+        }
+        #endregion
     }
 }

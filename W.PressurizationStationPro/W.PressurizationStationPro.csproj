@@ -80,6 +80,7 @@
     </Compile>
     <Compile Include="2.数据层\PlcDataservice.cs" />
     <Compile Include="4.实体库\PlcData.cs" />
+    <Compile Include="Eunm.cs" />
     <Compile Include="FrmValveControl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +92,7 @@
     <Compile Include="3.通信层\S7NetLib.cs" />
     <Compile Include="4.实体库\SysInfo.cs" />
     <Compile Include="2.数据层\SysInfoService.cs" />
+    <Compile Include="SysAmin.cs" />
     <EmbeddedResource Include="1.界面层\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>

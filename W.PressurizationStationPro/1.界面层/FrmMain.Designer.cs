@@ -36,7 +36,7 @@
             this.lbl_PreTankOut = new System.Windows.Forms.Label();
             this.label52 = new System.Windows.Forms.Label();
             this.btu_SysReset = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btn_UserLogin = new System.Windows.Forms.Button();
             this.label49 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
@@ -155,7 +155,7 @@
             this.MainPanel.Controls.Add(this.lbl_PreTankOut);
             this.MainPanel.Controls.Add(this.label52);
             this.MainPanel.Controls.Add(this.btu_SysReset);
-            this.MainPanel.Controls.Add(this.button5);
+            this.MainPanel.Controls.Add(this.btn_UserLogin);
             this.MainPanel.Controls.Add(this.label49);
             this.MainPanel.Controls.Add(this.label48);
             this.MainPanel.Controls.Add(this.label47);
@@ -297,20 +297,20 @@
             this.btu_SysReset.UseVisualStyleBackColor = true;
             this.btu_SysReset.Click += new System.EventHandler(this.btu_SysReset_Click);
             // 
-            // button5
+            // btn_UserLogin
             // 
-            this.button5.BackgroundImage = global::W.PressurizationStationPro.Properties.Resources.Border;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button5.Location = new System.Drawing.Point(877, 4);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(88, 45);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "用户登录";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btn_UserLogin.BackgroundImage = global::W.PressurizationStationPro.Properties.Resources.Border;
+            this.btn_UserLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_UserLogin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_UserLogin.FlatAppearance.BorderSize = 0;
+            this.btn_UserLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_UserLogin.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_UserLogin.Location = new System.Drawing.Point(877, 4);
+            this.btn_UserLogin.Name = "btn_UserLogin";
+            this.btn_UserLogin.Size = new System.Drawing.Size(88, 45);
+            this.btn_UserLogin.TabIndex = 6;
+            this.btn_UserLogin.Text = "用户登录";
+            this.btn_UserLogin.UseVisualStyleBackColor = true;
             // 
             // label49
             // 
@@ -1745,7 +1745,7 @@
         private System.Windows.Forms.Label lbl_PreTankOut;
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Button btu_SysReset;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btn_UserLogin;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Label label47;

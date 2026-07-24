@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -46,6 +47,16 @@ namespace W.PressurizationStationPro
                 {
                     //锁屏调用Windows底层API
                     LockWorkStation();
+                }
+            }
+            if(sysInfo.ScreenTime > 0)              //启用用户注销工能
+            {
+                TimeSpan timeSpan = DateTime.Now-this.LoginTime;
+                if (timeSpan.TotalMinutes >= sysInfo.ScreenTime)
+                {
+                    // 注销用户
+                    Program.CurrentUser = null;
+                    this.btn_UserLogin.Text = "用户登录";
                 }
             }
         }
@@ -176,7 +187,7 @@ namespace W.PressurizationStationPro
 
         private MessageFilter messageFilter;
 
-
+        private DateTime LoginTime=DateTime.Now;  //登录的时间
         private void btn_ParamSet_Click(object sender, EventArgs e)
         {
             new FrmParamSre(this.sysInfo, this.infoService, this.sysInfoPath).ShowDialog();
