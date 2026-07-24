@@ -112,12 +112,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ms_TempIn2 = new W.PressurizationStationPro.MeterShow();
-            this.ms_PressureTank2 = new W.PressurizationStationPro.MeterShow();
-            this.ms_PressureTankOut = new W.PressurizationStationPro.MeterShow();
-            this.ms_PressureTank1 = new W.PressurizationStationPro.MeterShow();
-            this.ms_TempOut = new W.PressurizationStationPro.MeterShow();
-            this.ms_TempIn1 = new W.PressurizationStationPro.MeterShow();
             this.sadf = new System.Windows.Forms.Panel();
             this.lbl_PressureOut = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -126,7 +120,6 @@
             this.lbl_PressureIn = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.meter_PressureIn = new xbd.ControlLib.xbdAnalogMeter();
-            this.meterShow3 = new W.PressurizationStationPro.MeterShow();
             this.TopPanel = new System.Windows.Forms.Panel();
             this.lbl_Time = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
@@ -134,6 +127,13 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btn_ParamSet = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.ms_TempIn2 = new W.PressurizationStationPro.MeterShow();
+            this.ms_PressureTank2 = new W.PressurizationStationPro.MeterShow();
+            this.ms_PressureTankOut = new W.PressurizationStationPro.MeterShow();
+            this.ms_PressureTank1 = new W.PressurizationStationPro.MeterShow();
+            this.ms_TempOut = new W.PressurizationStationPro.MeterShow();
+            this.ms_TempIn1 = new W.PressurizationStationPro.MeterShow();
+            this.meterShow3 = new W.PressurizationStationPro.MeterShow();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -1303,96 +1303,6 @@
             this.panel3.Size = new System.Drawing.Size(990, 188);
             this.panel3.TabIndex = 4;
             // 
-            // ms_TempIn2
-            // 
-            this.ms_TempIn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(9)))), ((int)(((byte)(45)))));
-            this.ms_TempIn2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ms_TempIn2.Location = new System.Drawing.Point(165, 7);
-            this.ms_TempIn2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ms_TempIn2.MeterMax = 100F;
-            this.ms_TempIn2.MeterMin = 0F;
-            this.ms_TempIn2.Name = "ms_TempIn2";
-            this.ms_TempIn2.ParamName = "2#进水管温度";
-            this.ms_TempIn2.ParamValue = 0F;
-            this.ms_TempIn2.Size = new System.Drawing.Size(147, 168);
-            this.ms_TempIn2.TabIndex = 0;
-            this.ms_TempIn2.Unit = "℃";
-            // 
-            // ms_PressureTank2
-            // 
-            this.ms_PressureTank2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(9)))), ((int)(((byte)(45)))));
-            this.ms_PressureTank2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ms_PressureTank2.Location = new System.Drawing.Point(655, 7);
-            this.ms_PressureTank2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ms_PressureTank2.MeterMax = 10F;
-            this.ms_PressureTank2.MeterMin = 0F;
-            this.ms_PressureTank2.Name = "ms_PressureTank2";
-            this.ms_PressureTank2.ParamName = "2#水箱压力";
-            this.ms_PressureTank2.ParamValue = 0F;
-            this.ms_PressureTank2.Size = new System.Drawing.Size(147, 168);
-            this.ms_PressureTank2.TabIndex = 0;
-            this.ms_PressureTank2.Unit = "bar";
-            // 
-            // ms_PressureTankOut
-            // 
-            this.ms_PressureTankOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(9)))), ((int)(((byte)(45)))));
-            this.ms_PressureTankOut.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ms_PressureTankOut.Location = new System.Drawing.Point(807, 7);
-            this.ms_PressureTankOut.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ms_PressureTankOut.MeterMax = 10F;
-            this.ms_PressureTankOut.MeterMin = 0F;
-            this.ms_PressureTankOut.Name = "ms_PressureTankOut";
-            this.ms_PressureTankOut.ParamName = "水箱出口压力";
-            this.ms_PressureTankOut.ParamValue = 0F;
-            this.ms_PressureTankOut.Size = new System.Drawing.Size(147, 168);
-            this.ms_PressureTankOut.TabIndex = 0;
-            this.ms_PressureTankOut.Unit = "bar";
-            // 
-            // ms_PressureTank1
-            // 
-            this.ms_PressureTank1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(9)))), ((int)(((byte)(45)))));
-            this.ms_PressureTank1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ms_PressureTank1.Location = new System.Drawing.Point(489, 7);
-            this.ms_PressureTank1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ms_PressureTank1.MeterMax = 10F;
-            this.ms_PressureTank1.MeterMin = 0F;
-            this.ms_PressureTank1.Name = "ms_PressureTank1";
-            this.ms_PressureTank1.ParamName = "1#水箱压力";
-            this.ms_PressureTank1.ParamValue = 0F;
-            this.ms_PressureTank1.Size = new System.Drawing.Size(147, 168);
-            this.ms_PressureTank1.TabIndex = 0;
-            this.ms_PressureTank1.Unit = "bar";
-            // 
-            // ms_TempOut
-            // 
-            this.ms_TempOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(9)))), ((int)(((byte)(45)))));
-            this.ms_TempOut.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ms_TempOut.Location = new System.Drawing.Point(325, 7);
-            this.ms_TempOut.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ms_TempOut.MeterMax = 100F;
-            this.ms_TempOut.MeterMin = 0F;
-            this.ms_TempOut.Name = "ms_TempOut";
-            this.ms_TempOut.ParamName = "出水管温度";
-            this.ms_TempOut.ParamValue = 0F;
-            this.ms_TempOut.Size = new System.Drawing.Size(147, 168);
-            this.ms_TempOut.TabIndex = 0;
-            this.ms_TempOut.Unit = "℃";
-            // 
-            // ms_TempIn1
-            // 
-            this.ms_TempIn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(9)))), ((int)(((byte)(45)))));
-            this.ms_TempIn1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ms_TempIn1.Location = new System.Drawing.Point(3, 7);
-            this.ms_TempIn1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ms_TempIn1.MeterMax = 100F;
-            this.ms_TempIn1.MeterMin = 0F;
-            this.ms_TempIn1.Name = "ms_TempIn1";
-            this.ms_TempIn1.ParamName = "1#进水管温度";
-            this.ms_TempIn1.ParamValue = 0F;
-            this.ms_TempIn1.Size = new System.Drawing.Size(147, 168);
-            this.ms_TempIn1.TabIndex = 0;
-            this.ms_TempIn1.Unit = "℃";
-            // 
             // sadf
             // 
             this.sadf.BackgroundImage = global::W.PressurizationStationPro.Properties.Resources.ParamPanel;
@@ -1499,21 +1409,6 @@
             this.meter_PressureIn.Value = 0D;
             this.meter_PressureIn.ViewGlass = false;
             // 
-            // meterShow3
-            // 
-            this.meterShow3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(9)))), ((int)(((byte)(45)))));
-            this.meterShow3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.meterShow3.Location = new System.Drawing.Point(329, 288);
-            this.meterShow3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.meterShow3.MeterMax = 100F;
-            this.meterShow3.MeterMin = 0F;
-            this.meterShow3.Name = "meterShow3";
-            this.meterShow3.ParamName = "出水温度";
-            this.meterShow3.ParamValue = 0F;
-            this.meterShow3.Size = new System.Drawing.Size(8, 8);
-            this.meterShow3.TabIndex = 2;
-            this.meterShow3.Unit = "℃";
-            // 
             // TopPanel
             // 
             this.TopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(9)))), ((int)(((byte)(45)))));
@@ -1616,6 +1511,111 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "智慧加压站SCADA监控系统";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // ms_TempIn2
+            // 
+            this.ms_TempIn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(9)))), ((int)(((byte)(45)))));
+            this.ms_TempIn2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ms_TempIn2.Location = new System.Drawing.Point(165, 7);
+            this.ms_TempIn2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ms_TempIn2.MeterMax = 100F;
+            this.ms_TempIn2.MeterMin = 0F;
+            this.ms_TempIn2.Name = "ms_TempIn2";
+            this.ms_TempIn2.ParamName = "2#进水管温度";
+            this.ms_TempIn2.ParamValue = 0F;
+            this.ms_TempIn2.Size = new System.Drawing.Size(147, 168);
+            this.ms_TempIn2.TabIndex = 0;
+            this.ms_TempIn2.Unit = "℃";
+            // 
+            // ms_PressureTank2
+            // 
+            this.ms_PressureTank2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(9)))), ((int)(((byte)(45)))));
+            this.ms_PressureTank2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ms_PressureTank2.Location = new System.Drawing.Point(655, 7);
+            this.ms_PressureTank2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ms_PressureTank2.MeterMax = 10F;
+            this.ms_PressureTank2.MeterMin = 0F;
+            this.ms_PressureTank2.Name = "ms_PressureTank2";
+            this.ms_PressureTank2.ParamName = "2#水箱压力";
+            this.ms_PressureTank2.ParamValue = 0F;
+            this.ms_PressureTank2.Size = new System.Drawing.Size(147, 168);
+            this.ms_PressureTank2.TabIndex = 0;
+            this.ms_PressureTank2.Unit = "bar";
+            // 
+            // ms_PressureTankOut
+            // 
+            this.ms_PressureTankOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(9)))), ((int)(((byte)(45)))));
+            this.ms_PressureTankOut.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ms_PressureTankOut.Location = new System.Drawing.Point(807, 7);
+            this.ms_PressureTankOut.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ms_PressureTankOut.MeterMax = 10F;
+            this.ms_PressureTankOut.MeterMin = 0F;
+            this.ms_PressureTankOut.Name = "ms_PressureTankOut";
+            this.ms_PressureTankOut.ParamName = "水箱出口压力";
+            this.ms_PressureTankOut.ParamValue = 0F;
+            this.ms_PressureTankOut.Size = new System.Drawing.Size(147, 168);
+            this.ms_PressureTankOut.TabIndex = 0;
+            this.ms_PressureTankOut.Unit = "bar";
+            // 
+            // ms_PressureTank1
+            // 
+            this.ms_PressureTank1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(9)))), ((int)(((byte)(45)))));
+            this.ms_PressureTank1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ms_PressureTank1.Location = new System.Drawing.Point(489, 7);
+            this.ms_PressureTank1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ms_PressureTank1.MeterMax = 10F;
+            this.ms_PressureTank1.MeterMin = 0F;
+            this.ms_PressureTank1.Name = "ms_PressureTank1";
+            this.ms_PressureTank1.ParamName = "1#水箱压力";
+            this.ms_PressureTank1.ParamValue = 0F;
+            this.ms_PressureTank1.Size = new System.Drawing.Size(147, 168);
+            this.ms_PressureTank1.TabIndex = 0;
+            this.ms_PressureTank1.Unit = "bar";
+            // 
+            // ms_TempOut
+            // 
+            this.ms_TempOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(9)))), ((int)(((byte)(45)))));
+            this.ms_TempOut.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ms_TempOut.Location = new System.Drawing.Point(325, 7);
+            this.ms_TempOut.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ms_TempOut.MeterMax = 100F;
+            this.ms_TempOut.MeterMin = 0F;
+            this.ms_TempOut.Name = "ms_TempOut";
+            this.ms_TempOut.ParamName = "出水管温度";
+            this.ms_TempOut.ParamValue = 0F;
+            this.ms_TempOut.Size = new System.Drawing.Size(147, 168);
+            this.ms_TempOut.TabIndex = 0;
+            this.ms_TempOut.Unit = "℃";
+            // 
+            // ms_TempIn1
+            // 
+            this.ms_TempIn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(9)))), ((int)(((byte)(45)))));
+            this.ms_TempIn1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ms_TempIn1.Location = new System.Drawing.Point(3, 7);
+            this.ms_TempIn1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ms_TempIn1.MeterMax = 100F;
+            this.ms_TempIn1.MeterMin = 0F;
+            this.ms_TempIn1.Name = "ms_TempIn1";
+            this.ms_TempIn1.ParamName = "1#进水管温度";
+            this.ms_TempIn1.ParamValue = 0F;
+            this.ms_TempIn1.Size = new System.Drawing.Size(147, 168);
+            this.ms_TempIn1.TabIndex = 0;
+            this.ms_TempIn1.Unit = "℃";
+            // 
+            // meterShow3
+            // 
+            this.meterShow3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(9)))), ((int)(((byte)(45)))));
+            this.meterShow3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.meterShow3.Location = new System.Drawing.Point(329, 288);
+            this.meterShow3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.meterShow3.MeterMax = 100F;
+            this.meterShow3.MeterMin = 0F;
+            this.meterShow3.Name = "meterShow3";
+            this.meterShow3.ParamName = "出水温度";
+            this.meterShow3.ParamValue = 0F;
+            this.meterShow3.Size = new System.Drawing.Size(8, 8);
+            this.meterShow3.TabIndex = 2;
+            this.meterShow3.Unit = "℃";
             // 
             // FrmMain
             // 
