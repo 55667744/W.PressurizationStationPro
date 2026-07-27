@@ -23,17 +23,17 @@ namespace W.PressurizationStationPro
         {
             InitializeComponent();
 
-            this.updateTimer.Interval = 500;
-            this.updateTimer.Tick += updataTimer_Tick;
-            this.updateTimer.Start();
+            this.updateTimer.Interval = 500;             //interval 是timer的一个方法，时间间隔！这里tpdatime是从179行new的一个方法
+            this.updateTimer.Tick += updataTimer_Tick;        //+=这个知识点是事件绑定这里吧.tick事件给了后者。他是到时触发的作用，额是从0到1的逻辑吗？应该是运行下面的方法
+            this.updateTimer.Start();    //启动定时器
 
 
             // infoService.SetSysInfoToPath(new SysInfo(), sysInfoPath);  测试代码
-           this.Load += FrmMain_Load;
-           this.FormClosing += FrmMain_FormClosing;
+           this.Load += FrmMain_Load;             //调用69行的方法绑定到窗体加载事件，他本身就是用户自定义方法，是一个系统加载方法。，里面有获取系统信息吧plc信息在加载winform的时候就读上来
+            this.FormClosing += FrmMain_FormClosing;  
         }
 
-        private void updataTimer_Tick(object sender, EventArgs e)
+        private void updataTimer_Tick(object sender, EventArgs e)     //这是一个
         {
             this.lbl_Time.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+ " "+
             new CultureInfo("zh-CN").DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek);
