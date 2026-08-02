@@ -23,7 +23,7 @@ namespace W.PressurizationStationPro
         /// <summary>
         /// 当前通讯，标志位
         /// </summary>
-        public bool isConnected { get; set; } = false;
+        public bool isConnected { get; set; } = false;         //检测plc是否连接成功的标志位。
 
         //通信错误次数
         public int ErrorTimes { get; set; }

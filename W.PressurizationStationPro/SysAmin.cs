@@ -17,7 +17,7 @@ namespace W.PressurizationStationPro
 
         public string LoginPwd { get; set; }
 
-        public RoleName RoleName { get; set; };
+        public RoleName RoleName { get; set; }
 
 
     }
