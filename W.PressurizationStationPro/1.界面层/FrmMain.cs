@@ -146,25 +146,25 @@ namespace W.PressurizationStationPro
                         dataService.IsFirstScan = false;    //这里是第一次扫描的置0位！
                     }
                     //连接
-                       var result=dataService.connect(this.sysInfo);
+                       var result=dataService.connect(this.sysInfo);      //把下面的plc信息提供过来然后连接
 
-                    dataService.isConnected = result.IsSuccess;
-                }
+                    dataService.isConnected = result.IsSuccess;  //我不知道.IsSuccess;是怎么读取成功的，也没有给他输入任何变量或标志位，不知道他为什么直接返回了一个通讯链接。
+                }                                                
             }
         }
 
         /// <summary>
         /// 系统配置文件路径
         /// </summary>
-        private string sysInfoPath = Application.StartupPath + "\\SysInfo.ini";
+        private string sysInfoPath = Application.StartupPath + "\\SysInfo.ini";                   //这里我不懂
 
         /// <summary>
         /// 系统配置文件的服务对象
         /// </summary>
-        private SysInfoService infoService = new SysInfoService();
-        
+        private SysInfoService infoService = new SysInfoService();    //这个我转到定义里面去看了，这是配置文件，里面是 PLC 的机槽号、通讯地址等内容。
+
         /// <summary>
-        /// 系统配置对象
+        /// 系统配置对象                                ///这里有个很大的问题：sysInfo 和infoService这两个有什么区别？我看里面都是通讯相关的内容，还有机槽、PLC 相关的东西，不理解为什么会有两个这样的对象。
         /// </summary>
         private SysInfo sysInfo = new SysInfo();      //这个是系统配置对象，里面有plc的ip地址，端口号，连接方式等信息，
                                                                                            //好像是当时老师让我写的一个类，里面有很多属性，都是系统配置相关的，
@@ -180,18 +180,18 @@ namespace W.PressurizationStationPro
 
 
 
-        private Timer updateTimer = new Timer();
+        private Timer updateTimer = new Timer();           //这里定义了一个计时器的类实例，在这个main函数里面的最上面有调用过它
 
         /// <summary>
-        /// 第一次扫描标志位
+        /// 第一次扫描标志位                                       //这里的第一次扫描标志位是什么？扫描标志位是程序启动第一次扫描标志位吗？从上到下。
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private bool FirsScan=true;
 
-        private MessageFilter messageFilter;
+        private MessageFilter messageFilter;                        //这是一个消息筛选器的一个实例在这个main函数的最下面。
 
-        private DateTime LoginTime=DateTime.Now;  //第一次扫描的登录的时间
+        private DateTime LoginTime=DateTime.Now;  //第一次扫描的登录的时间   这里 data team 它不是时间长度，是一个时间点。
         private void btn_ParamSet_Click(object sender, EventArgs e)
         {
             new FrmParamSre(this.sysInfo, this.infoService, this.sysInfoPath).ShowDialog();
@@ -199,14 +199,14 @@ namespace W.PressurizationStationPro
 
 
         //通用更新UI界面
-        private void UpdateUIData(PlcData plcData)
+        private void UpdateUIData(PlcData plcData)     //这里把 PLC 里面的数据传进去，然后用这个方法去更新 UI 界面，也就是更新 UI 界面上控件的显示数据。
         {
-            if (this.InvokeRequired)
+            if (this.InvokeRequired)                //InvokeRequired是检测现在所在的程序线程是不是调用它的线程，，不过这里有个疑问他怎么知道他跑的是UI线程啊
             {
                 try
                 {
                  //委托处理
-                  this.Invoke(new Action<PlcData>(UpdateUIData), plcData);
+                  this.Invoke(new Action<PlcData>(UpdateUIData), plcData);  //这里检测如果不是 UI 线程的话，就把数据更新进去。但是这里好像就是 UI 线程吧？Pic data 这不就是 UI 里面的数据显示吗？搞不懂这个地方。
                 }
                 catch (Exception)
                 {
@@ -219,15 +219,15 @@ namespace W.PressurizationStationPro
             else
             {
                 ///第一次扫描执行，以后就不执行了  
-                if (FirsScan)
+                if (FirsScan)                 //第一次也就是程序刚刚运行，从上到下扫描周期第一次。
                 {
-                    this.toggle_Pump1.Checked=plcData.InPump1State;
+                    this.toggle_Pump1.Checked=plcData.InPump1State;           //这里也不太理解，应该是吧，数据给到优送页面上面的控件商。
                     this.toggle_Pump2.Checked = plcData.InPump2State;
                     FirsScan = false;
                 }
 
-
-                // 左侧仪表
+                                               
+                // 左侧仪表                                               //下面都是 PRC 数据的更新，都往winfrom页面上显示。
                 this.lbl_PressureIn.Text = plcData.PressureIn.ToString("f2") + " bar";
                 this.lbl_PressureOut.Text = plcData.PressureOut.ToString("f2") + " bar";
                 this.meter_PressureIn.Value = plcData.PressureIn;
@@ -289,7 +289,7 @@ namespace W.PressurizationStationPro
 
         private void btn_Pump1_Click(object sender, EventArgs e)
         {
-            dataService.CirclePump2Control(this.btn_Pump2.Text == "启动");
+            dataService.CirclePump2Control(this.btn_Pump1.Text == "启动");
         }
 
         private void btn_Pump2_Click(object sender, EventArgs e)
