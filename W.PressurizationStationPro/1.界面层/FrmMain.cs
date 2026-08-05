@@ -50,7 +50,7 @@ namespace W.PressurizationStationPro
                     LockWorkStation();   
                 }
             }
-            if(sysInfo.ScreenTime > 0)              //启用用户注销工能
+            if(sysInfo.ScreenTime > 0)              //启用用户注销（退出登录）功能
             {
                 TimeSpan timeSpan = DateTime.Now-this.LoginTime;    //当前时间减去上次登录第一次扫描位时的时间
                 if (timeSpan.TotalMinutes >= sysInfo.ScreenTime)           //登录总时长大于无操作的时间              TimeSpan timeSpan这个类型我不理解回头要记
@@ -85,7 +85,7 @@ namespace W.PressurizationStationPro
 
             cts=new CancellationTokenSource();         //这里很奇怪下面已经定义了一个cts了。
 
-            Task.Run(new Action(() =>            
+            Task.Run(new Action(() =>      //多线程和委托这是重难点 new了一个action委托      运行下面的方法体。 
             {
 
                 PLCCommunication();
@@ -96,20 +96,20 @@ namespace W.PressurizationStationPro
         /// 多线程方法体，与plc实时通信
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        private void PLCCommunication()
+        private void PLCCommunication()       //这是那个多线程的方法体（plc的连接）
         {
-           while(!cts.IsCancellationRequested)
+           while(!cts.IsCancellationRequested)      //有点绕有两个cts，IsCancellationRequested这个我也不知道是什么，回去做笔记
             {
                 //已经连接成功
-                if(dataService.isConnected)
+                if(dataService.isConnected)                //plc数据服务对象的实例，调用检测plc是否连接成功的属性
                 {
-                    var data=  dataService.ReadPLCData();
-                    if(data.IsSuccess)
+                    var data=  dataService.ReadPLCData();       //读取数据存到data里面
+                    if(data.IsSuccess)             // 这里刚刚定义了一个data，为什么可以直接调用issuccess？随便一个类型都可以吗？这个issuccess是自定义类里面的吧                                
                     {
                         //清零错误次数
-                        dataService.ErrorTimes = 0;
-                        //更新 
-                        this.UpdateUIData(data.Content);
+                        dataService.ErrorTimes = 0;            // 操作成功通讯错误次数清零
+                        //更新    
+                        this.UpdateUIData(data.Content);  //data是刚才读到的plc数据，然后他为什么调用content？我转定义显示是数据，应该是plc数据作为updateuidata更新页面的参数
                         //逻辑
 
 
@@ -118,32 +118,32 @@ namespace W.PressurizationStationPro
                     else
                     {
                         //容错次数
-                        dataService.ErrorTimes++;
-                        if (dataService.ErrorTimes >= dataService.AllowErrorTimes)
+                        dataService.ErrorTimes++;   //通信错误次数自增加
+                        if (dataService.ErrorTimes >= dataService.AllowErrorTimes)        //超过允许的错误次数
                         {
-                            dataService.isConnected = false;
+                            dataService.isConnected = false;                  //把连接状态改为false
                         }
 
                     }
-                    Thread.Sleep(300);
+                    Thread.Sleep(300);       //线程睡眠300毫秒    
 
-                    dataService.isConnected = false;
+                    dataService.isConnected = false;     //又有一个把连接状态改为false
                 }
                 //连接
                 else
                 {
                     //如果是第一次扫描就直接连接
                     //如果不是第一次扫描就先断开再连接
-                   if(!dataService.IsFirstScan)
+                   if(!dataService.IsFirstScan)   //判断是不是第一次扫描
                     {
                         //重连周期
-                        Thread.Sleep(3000);
+                        Thread.Sleep(3000);     //3s
                         //断开连接
                         dataService.Disconnect();
                     }
                    else
                     {
-                        dataService.IsFirstScan = false;
+                        dataService.IsFirstScan = false;    //这里是第一次扫描的置0位！
                     }
                     //连接
                        var result=dataService.connect(this.sysInfo);
