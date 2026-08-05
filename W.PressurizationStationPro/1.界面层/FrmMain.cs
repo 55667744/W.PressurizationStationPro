@@ -33,58 +33,59 @@ namespace W.PressurizationStationPro
             this.FormClosing += FrmMain_FormClosing;  
         }
 
-        private void updataTimer_Tick(object sender, EventArgs e)     //这是一个
+        private void updataTimer_Tick(object sender, EventArgs e)     //这是一个定时器点击事件，里面有一个方法是获取系统信息的方法
         {
-            this.lbl_Time.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+ " "+
-            new CultureInfo("zh-CN").DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek);
-            this.led_PLCState.State = dataService.isConnected;
+            this.lbl_Time.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+ " " +                  //这两行是给窗体的时间标签赋值，格式是年月日时分秒
+                CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek);   //获取当前时间的星期几
+            new CultureInfo("zh-CN").DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek);     //这个是获取当前时间的星期几的中文格式（但是我不太懂这个语法）
+            this.led_PLCState.State = dataService.isConnected;   //dataservice是下面new的plc系统信息对象isconnected是里面的连接状态，把plc连接状态反馈给窗体控件，作为页面连接状态提示
 
             //如果大于0才启用该功能
-            if (sysInfo.ScreenTime > 0)
-            {
-                Program.TickCount++;
+            if (sysInfo.ScreenTime > 0)             //sysinfo是下面new的一个系统信息类，screentime是这个类中的一个属性，是检测无操作时间的
+            {                                                  
+                Program.TickCount++;                //program是c#系统运行的主程序里面有一个tickcount属性，自增加代表记录无操作时间（这里有个疑问，为什么不直接拿ScreenTime判断）
                 if (sysInfo.ScreenTime*1000/this.updateTimer.Interval==Program.TickCount)
-                {
+                {   //系统无操作时间*1000除系统设置的500间隔，是否等于program自增加的数字，(这里不懂到时候问claude)
                     //锁屏调用Windows底层API
-                    LockWorkStation();
+                    LockWorkStation();   
                 }
             }
             if(sysInfo.ScreenTime > 0)              //启用用户注销工能
             {
-                TimeSpan timeSpan = DateTime.Now-this.LoginTime;
-                if (timeSpan.TotalMinutes >= sysInfo.ScreenTime)
+                TimeSpan timeSpan = DateTime.Now-this.LoginTime;    //当前时间减去上次登录第一次扫描位时的时间
+                if (timeSpan.TotalMinutes >= sysInfo.ScreenTime)           //登录总时长大于无操作的时间              TimeSpan timeSpan这个类型我不理解回头要记
                 {
                     // 注销用户
                     Program.CurrentUser = null;
-                    this.btn_UserLogin.Text = "用户登录";
+                    this.btn_UserLogin.Text = "用户登录";                //这应该是改变用户登录状态
                 }
             }
         }
 
-        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)   //这也不知道，，cts是那个退出令牌的实例。
         {
            cts?.Cancel();
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            this.sysInfo=infoService.GetSysInfoFromPath(sysInfoPath);
+            this.sysInfo=infoService.GetSysInfoFromPath(sysInfoPath);   //这个获取本地电脑信息，给sysinfo。GetSysInfoFromPath我缺少他的笔记！
 
-            if(sysInfo == null)
+            if (sysInfo == null)         //如果系统配置对象为空
             {
-                new FrmMsgNoAck("系统配置加载失败","系统配置").ShowDialog();
+                new FrmMsgNoAck("系统配置加载失败","系统配置").ShowDialog();          //这里不理解这个语法
                 return;
             }
-            //锁屏处理
+            //这里又有一个锁屏？上面不是锁过了吗，，
             if(sysInfo.ScreenTime > 0)
             {
-                messageFilter = new MessageFilter();
-                Application.AddMessageFilter(messageFilter);
+                messageFilter = new MessageFilter();              //new了一个检测鼠标是否移动的实例
+                Application.AddMessageFilter(messageFilter);     //Application.AddMessageFilter没见过这个类，，很陌生
             }
 
-            cts=new CancellationTokenSource();
+            cts=new CancellationTokenSource();         //这里很奇怪下面已经定义了一个cts了。
 
-            Task.Run(new Action(() =>
+            Task.Run(new Action(() =>            
             {
 
                 PLCCommunication();
@@ -165,14 +166,17 @@ namespace W.PressurizationStationPro
         /// <summary>
         /// 系统配置对象
         /// </summary>
-        private SysInfo sysInfo = new SysInfo();
-  
+        private SysInfo sysInfo = new SysInfo();      //这个是系统配置对象，里面有plc的ip地址，端口号，连接方式等信息，
+                                                                                           //好像是当时老师让我写的一个类，里面有很多属性，都是系统配置相关的，
+                                                                                           //这个在实际运用中应该是填写plc的相关信息
+
         /// <summary>
         /// 多线程取消源
         /// </summary>
-        private CancellationTokenSource cts;
+        private CancellationTokenSource cts;        //CancellationTokenSource这个我不太懂，查了一下是取消令牌，cts是这个类的实例。
 
-        private PlcDataservice dataService = new PlcDataservice();
+        private PlcDataservice dataService = new PlcDataservice();     // 这里很关键，这里new了一个PLC数据服务对象，dataservice
+                                                                                                               //  里面有很多方法和属性，主要是和PLC通信的逻辑
 
 
 
@@ -187,7 +191,7 @@ namespace W.PressurizationStationPro
 
         private MessageFilter messageFilter;
 
-        private DateTime LoginTime=DateTime.Now;  //登录的时间
+        private DateTime LoginTime=DateTime.Now;  //第一次扫描的登录的时间
         private void btn_ParamSet_Click(object sender, EventArgs e)
         {
             new FrmParamSre(this.sysInfo, this.infoService, this.sysInfoPath).ShowDialog();
@@ -343,8 +347,8 @@ namespace W.PressurizationStationPro
     }
 
 
-    #region 消息筛选器 
-    public class MessageFilter : IMessageFilter
+    #region 消息筛选器    这个是老师代码库的代码直接拖过来的，应该是检测鼠标是否移动，理解他难度有点大
+    public class MessageFilter : IMessageFilter        
     {
         public bool PreFilterMessage(ref Message m)
         {
