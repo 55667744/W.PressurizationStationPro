@@ -1,4 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using AForge.Imaging.Filters;
+using AForge.Video.DirectShow;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +28,12 @@ namespace W.PressurizationStationPro
             ///初始化
            
             this.cmb_CPUType.DataSource=Enum.GetNames(typeof(CpuType));
+            FilterInfoCollection infoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
 
+            foreach(FilterInfo item in infoCollection)
+            {
+                this.cmb_Camera.Items.Add(item.Name);
+            }
             ///更新
 
             if(this.SysInfo != null)
@@ -39,7 +46,12 @@ namespace W.PressurizationStationPro
                 this.toggle_AutoStart.Checked = this.SysInfo.AutoStart;
                 this.txt_ScreenTime.Text = this.SysInfo.ScreenTime.ToString();
                 this.txt_LogoffTime.Text = this.SysInfo.LogoffTime.ToString();
-                //this.cmb_Camera.SelectedIndex = this.SysInfo.CameraIndex;
+
+                if(infoCollection.Count>this.SysInfo.CameraIndex)
+                {
+                    this.cmb_Camera.SelectedIndex = this.SysInfo.CameraIndex;
+                }
+                this.cmb_Camera.SelectedIndex = this.SysInfo.CameraIndex;
 
             }
 

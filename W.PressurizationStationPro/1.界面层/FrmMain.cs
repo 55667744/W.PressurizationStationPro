@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using xbd.ControlLib;
+using xbd.PressurizationStationPro;
 using Timer = System.Windows.Forms.Timer;
 
 namespace W.PressurizationStationPro
@@ -64,6 +65,7 @@ namespace W.PressurizationStationPro
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)   //这也不知道，，cts是那个退出令牌的实例。
         {
+           camera?.StopCamera();
            cts?.Cancel();
         }
 
@@ -90,6 +92,9 @@ namespace W.PressurizationStationPro
 
                 PLCCommunication();
             }));
+            //采集摄像头
+            this.camera = new CameraHelper(sysInfo.CameraIndex, this.vsp_Panel);
+            this.camera.StartCamera();
         }
 
         /// <summary>
@@ -192,6 +197,10 @@ namespace W.PressurizationStationPro
         private MessageFilter messageFilter;                        //这是一个消息筛选器的一个实例在这个main函数的最下面。
 
         private DateTime LoginTime=DateTime.Now;  //第一次扫描的登录的时间   这里 data team 它不是时间长度，是一个时间点。
+
+        //摄像头采集对象
+        private CameraHelper camera = null;
+
         private void btn_ParamSet_Click(object sender, EventArgs e)
         {
             new FrmParamSre(this.sysInfo, this.infoService, this.sysInfoPath).ShowDialog();

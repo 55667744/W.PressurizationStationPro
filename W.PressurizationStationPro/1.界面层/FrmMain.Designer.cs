@@ -103,6 +103,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.vsp_Panel = new AForge.Controls.VideoSourcePlayer();
             this.panel4 = new System.Windows.Forms.Panel();
             this.led_SysAlarmState = new xbd.ControlLib.xbdState();
             this.label9 = new System.Windows.Forms.Label();
@@ -139,6 +140,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.sadf.SuspendLayout();
@@ -256,13 +258,13 @@
             this.label50.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label50.Location = new System.Drawing.Point(1013, 334);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(45, 28);
+            this.label50.Size = new System.Drawing.Size(59, 36);
             this.label50.TabIndex = 38;
             this.label50.Text = "bar";
             // 
             // lbl_PreTankOut
             // 
-            this.lbl_PreTankOut.Font = new System.Drawing.Font("DigifaceWide", 18.5F);
+            this.lbl_PreTankOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.5F);
             this.lbl_PreTankOut.ForeColor = System.Drawing.Color.White;
             this.lbl_PreTankOut.Location = new System.Drawing.Point(918, 329);
             this.lbl_PreTankOut.Name = "lbl_PreTankOut";
@@ -277,7 +279,7 @@
             this.label52.ForeColor = System.Drawing.Color.Lime;
             this.label52.Location = new System.Drawing.Point(937, 305);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(96, 28);
+            this.label52.Size = new System.Drawing.Size(127, 36);
             this.label52.TabIndex = 36;
             this.label52.Text = "出水压力";
             // 
@@ -318,7 +320,7 @@
             this.label49.ForeColor = System.Drawing.Color.Lime;
             this.label49.Location = new System.Drawing.Point(983, 131);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(96, 28);
+            this.label49.Size = new System.Drawing.Size(127, 36);
             this.label49.TabIndex = 34;
             this.label49.Text = "水箱液位";
             // 
@@ -328,7 +330,7 @@
             this.label48.ForeColor = System.Drawing.Color.Lime;
             this.label48.Location = new System.Drawing.Point(725, 128);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(96, 28);
+            this.label48.Size = new System.Drawing.Size(127, 36);
             this.label48.TabIndex = 34;
             this.label48.Text = "水箱液位";
             // 
@@ -338,7 +340,7 @@
             this.label47.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label47.Location = new System.Drawing.Point(339, 370);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(33, 28);
+            this.label47.Size = new System.Drawing.Size(43, 36);
             this.label47.TabIndex = 33;
             this.label47.Text = "℃";
             // 
@@ -348,13 +350,13 @@
             this.label46.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label46.Location = new System.Drawing.Point(336, 292);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(33, 28);
+            this.label46.Size = new System.Drawing.Size(43, 36);
             this.label46.TabIndex = 33;
             this.label46.Text = "℃";
             // 
             // lbl_TempOut
             // 
-            this.lbl_TempOut.Font = new System.Drawing.Font("DigifaceWide", 18.5F);
+            this.lbl_TempOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.5F);
             this.lbl_TempOut.ForeColor = System.Drawing.Color.White;
             this.lbl_TempOut.Location = new System.Drawing.Point(244, 365);
             this.lbl_TempOut.Name = "lbl_TempOut";
@@ -369,7 +371,7 @@
             this.label45.ForeColor = System.Drawing.Color.Lime;
             this.label45.Location = new System.Drawing.Point(263, 341);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(96, 28);
+            this.label45.Size = new System.Drawing.Size(127, 36);
             this.label45.TabIndex = 31;
             this.label45.Text = "出水温度";
             // 
@@ -379,13 +381,13 @@
             this.label43.ForeColor = System.Drawing.Color.Lime;
             this.label43.Location = new System.Drawing.Point(263, 393);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(96, 28);
+            this.label43.Size = new System.Drawing.Size(127, 36);
             this.label43.TabIndex = 30;
             this.label43.Text = "总出水管";
             // 
             // lbl_Tempin2
             // 
-            this.lbl_Tempin2.Font = new System.Drawing.Font("DigifaceWide", 18.5F);
+            this.lbl_Tempin2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.5F);
             this.lbl_Tempin2.ForeColor = System.Drawing.Color.White;
             this.lbl_Tempin2.Location = new System.Drawing.Point(243, 288);
             this.lbl_Tempin2.Name = "lbl_Tempin2";
@@ -400,7 +402,7 @@
             this.label41.ForeColor = System.Drawing.Color.Lime;
             this.label41.Location = new System.Drawing.Point(263, 264);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(96, 28);
+            this.label41.Size = new System.Drawing.Size(127, 36);
             this.label41.TabIndex = 28;
             this.label41.Text = "进水温度";
             // 
@@ -410,7 +412,7 @@
             this.label42.ForeColor = System.Drawing.Color.Lime;
             this.label42.Location = new System.Drawing.Point(267, 221);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(79, 28);
+            this.label42.Size = new System.Drawing.Size(105, 36);
             this.label42.TabIndex = 27;
             this.label42.Text = "2#进水";
             // 
@@ -420,13 +422,13 @@
             this.label39.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label39.Location = new System.Drawing.Point(334, 131);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(33, 28);
+            this.label39.Size = new System.Drawing.Size(43, 36);
             this.label39.TabIndex = 26;
             this.label39.Text = "℃";
             // 
             // lbl_Tempin1
             // 
-            this.lbl_Tempin1.Font = new System.Drawing.Font("DigifaceWide", 18.5F);
+            this.lbl_Tempin1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.5F);
             this.lbl_Tempin1.ForeColor = System.Drawing.Color.White;
             this.lbl_Tempin1.Location = new System.Drawing.Point(239, 125);
             this.lbl_Tempin1.Name = "lbl_Tempin1";
@@ -441,7 +443,7 @@
             this.label37.ForeColor = System.Drawing.Color.Lime;
             this.label37.Location = new System.Drawing.Point(265, 101);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(96, 28);
+            this.label37.Size = new System.Drawing.Size(127, 36);
             this.label37.TabIndex = 24;
             this.label37.Text = "进水温度";
             // 
@@ -489,7 +491,7 @@
             this.label30.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label30.Location = new System.Drawing.Point(542, 134);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(79, 28);
+            this.label30.Size = new System.Drawing.Size(105, 36);
             this.label30.TabIndex = 21;
             this.label30.Text = "1#水箱";
             // 
@@ -684,7 +686,7 @@
             this.label28.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label28.Location = new System.Drawing.Point(809, 133);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(79, 28);
+            this.label28.Size = new System.Drawing.Size(105, 36);
             this.label28.TabIndex = 16;
             this.label28.Text = "2#水箱";
             // 
@@ -694,7 +696,7 @@
             this.label27.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label27.Location = new System.Drawing.Point(537, 131);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(79, 28);
+            this.label27.Size = new System.Drawing.Size(105, 36);
             this.label27.TabIndex = 16;
             this.label27.Text = "1#水箱";
             // 
@@ -734,7 +736,7 @@
             this.label29.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label29.Location = new System.Drawing.Point(370, 181);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(100, 28);
+            this.label29.Size = new System.Drawing.Size(133, 36);
             this.label29.TabIndex = 14;
             this.label29.Text = "2#进水泵";
             // 
@@ -744,7 +746,7 @@
             this.label34.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label34.Location = new System.Drawing.Point(739, 308);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(100, 28);
+            this.label34.Size = new System.Drawing.Size(133, 36);
             this.label34.TabIndex = 14;
             this.label34.Text = "2#循环泵";
             // 
@@ -754,7 +756,7 @@
             this.label36.ForeColor = System.Drawing.Color.Lime;
             this.label36.Location = new System.Drawing.Point(267, 58);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(79, 28);
+            this.label36.Size = new System.Drawing.Size(105, 36);
             this.label36.TabIndex = 14;
             this.label36.Text = "1#进水";
             // 
@@ -764,7 +766,7 @@
             this.label33.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label33.Location = new System.Drawing.Point(636, 307);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(100, 28);
+            this.label33.Size = new System.Drawing.Size(133, 36);
             this.label33.TabIndex = 14;
             this.label33.Text = "1#循环泵";
             // 
@@ -774,7 +776,7 @@
             this.label32.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label32.Location = new System.Drawing.Point(374, 359);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(75, 28);
+            this.label32.Size = new System.Drawing.Size(99, 36);
             this.label32.TabIndex = 14;
             this.label32.Text = "出水阀";
             // 
@@ -784,7 +786,7 @@
             this.label35.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label35.Location = new System.Drawing.Point(942, 355);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(96, 28);
+            this.label35.Size = new System.Drawing.Size(127, 36);
             this.label35.TabIndex = 14;
             this.label35.Text = "出口压力";
             // 
@@ -794,7 +796,7 @@
             this.label31.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label31.Location = new System.Drawing.Point(522, 31);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(75, 28);
+            this.label31.Size = new System.Drawing.Size(99, 36);
             this.label31.TabIndex = 14;
             this.label31.Text = "进水阀";
             // 
@@ -804,7 +806,7 @@
             this.label26.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label26.Location = new System.Drawing.Point(370, 23);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(100, 28);
+            this.label26.Size = new System.Drawing.Size(133, 36);
             this.label26.TabIndex = 14;
             this.label26.Text = "1#进水泵";
             // 
@@ -1118,7 +1120,7 @@
             this.label23.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label23.Location = new System.Drawing.Point(18, 154);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(138, 28);
+            this.label23.Size = new System.Drawing.Size(183, 36);
             this.label23.TabIndex = 6;
             this.label23.Text = "出水管压力：";
             this.label23.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1130,7 +1132,7 @@
             this.label20.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label20.Location = new System.Drawing.Point(18, 122);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(142, 28);
+            this.label20.Size = new System.Drawing.Size(189, 36);
             this.label20.TabIndex = 6;
             this.label20.Text = "2#水箱液位：";
             this.label20.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1142,7 +1144,7 @@
             this.label17.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label17.Location = new System.Drawing.Point(18, 90);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(142, 28);
+            this.label17.Size = new System.Drawing.Size(189, 36);
             this.label17.TabIndex = 6;
             this.label17.Text = "2#水箱压力：";
             this.label17.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1154,7 +1156,7 @@
             this.label14.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label14.Location = new System.Drawing.Point(18, 58);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(142, 28);
+            this.label14.Size = new System.Drawing.Size(189, 36);
             this.label14.TabIndex = 6;
             this.label14.Text = "1#水箱液位：";
             this.label14.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1166,7 +1168,7 @@
             this.label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label12.Location = new System.Drawing.Point(18, 26);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(142, 28);
+            this.label12.Size = new System.Drawing.Size(189, 36);
             this.label12.TabIndex = 6;
             this.label12.Text = "1#水箱压力：";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1177,7 +1179,7 @@
             this.label13.ForeColor = System.Drawing.Color.Lime;
             this.label13.Location = new System.Drawing.Point(18, 6);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(96, 28);
+            this.label13.Size = new System.Drawing.Size(127, 36);
             this.label13.TabIndex = 0;
             this.label13.Text = "系统参数";
             // 
@@ -1185,10 +1187,20 @@
             // 
             this.panel6.BackgroundImage = global::W.PressurizationStationPro.Properties.Resources.ParamPanel;
             this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel6.Controls.Add(this.vsp_Panel);
             this.panel6.Location = new System.Drawing.Point(1030, 457);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(250, 188);
             this.panel6.TabIndex = 4;
+            // 
+            // vsp_Panel
+            // 
+            this.vsp_Panel.Location = new System.Drawing.Point(13, 18);
+            this.vsp_Panel.Name = "vsp_Panel";
+            this.vsp_Panel.Size = new System.Drawing.Size(226, 157);
+            this.vsp_Panel.TabIndex = 0;
+            this.vsp_Panel.Text = "videoSourcePlayer1";
+            this.vsp_Panel.VideoSource = null;
             // 
             // panel4
             // 
@@ -1225,7 +1237,7 @@
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label9.Location = new System.Drawing.Point(18, 89);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(159, 28);
+            this.label9.Size = new System.Drawing.Size(211, 36);
             this.label9.TabIndex = 10;
             this.label9.Text = "系统报警状态：";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1249,7 +1261,7 @@
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label8.Location = new System.Drawing.Point(18, 57);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(159, 28);
+            this.label8.Size = new System.Drawing.Size(211, 36);
             this.label8.TabIndex = 8;
             this.label8.Text = "系统运行状态：";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1273,7 +1285,7 @@
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label6.Location = new System.Drawing.Point(18, 26);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(155, 28);
+            this.label6.Size = new System.Drawing.Size(205, 36);
             this.label6.TabIndex = 6;
             this.label6.Text = "PLC连接状态：";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1284,7 +1296,7 @@
             this.label7.ForeColor = System.Drawing.Color.Lime;
             this.label7.Location = new System.Drawing.Point(18, 6);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(96, 28);
+            this.label7.Size = new System.Drawing.Size(127, 36);
             this.label7.TabIndex = 0;
             this.label7.Text = "系统状态";
             // 
@@ -1423,7 +1435,7 @@
             this.label5.ForeColor = System.Drawing.Color.Lime;
             this.label5.Location = new System.Drawing.Point(18, 6);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 28);
+            this.label5.Size = new System.Drawing.Size(127, 36);
             this.label5.TabIndex = 0;
             this.label5.Text = "出水压力";
             // 
@@ -1476,7 +1488,7 @@
             this.label3.ForeColor = System.Drawing.Color.Lime;
             this.label3.Location = new System.Drawing.Point(18, 6);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 28);
+            this.label3.Size = new System.Drawing.Size(127, 36);
             this.label3.TabIndex = 0;
             this.label3.Text = "进水压力";
             // 
@@ -1539,7 +1551,7 @@
             this.lbl_Time.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbl_Time.Location = new System.Drawing.Point(863, 10);
             this.lbl_Time.Name = "lbl_Time";
-            this.lbl_Time.Size = new System.Drawing.Size(271, 28);
+            this.lbl_Time.Size = new System.Drawing.Size(361, 36);
             this.lbl_Time.TabIndex = 5;
             this.lbl_Time.Text = "2026-6-15 00:00:00 星期五";
             this.lbl_Time.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1619,7 +1631,7 @@
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 720);
             this.Controls.Add(this.MainPanel);
@@ -1637,6 +1649,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -1757,5 +1770,6 @@
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Button btn_Pump2;
+        private AForge.Controls.VideoSourcePlayer vsp_Panel;
     }
 }
