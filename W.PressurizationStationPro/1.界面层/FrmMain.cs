@@ -130,9 +130,7 @@ namespace W.PressurizationStationPro
                         }
 
                     }
-                    Thread.Sleep(300);       //线程睡眠300毫秒    
-
-                    dataService.isConnected = false;     //又有一个把连接状态改为false
+                    Thread.Sleep(300);       //线程睡眠300毫秒
                 }
                 //连接
                 else

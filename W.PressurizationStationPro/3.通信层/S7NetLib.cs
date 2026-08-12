@@ -61,7 +61,7 @@ namespace W.PressurizationStationPro
             //链接plc
             siemen=new Plc(this.CpuType,this.IPAddress,this.Rack,this.Slot);
             siemen.Open();
-                return OperateResult.CreateFailResult();
+                return OperateResult.CreateSuccessResult();
 
             }
             catch (Exception ex)
