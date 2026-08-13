@@ -9,7 +9,7 @@ namespace W.PressurizationStationPro
     /// <summary>
     /// 用户实体类
     /// </summary>
-    public class SysAmin
+    public class SysAdmin
     {
         public int LoginId { get; set; }
 

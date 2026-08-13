@@ -144,7 +144,8 @@
     <Compile Include="4.实体库\SysInfo.cs" />
     <Compile Include="2.数据层\SysInfoService.cs" />
     <Compile Include="5.工具库\SQLiteHelper.cs" />
-    <Compile Include="4.实体库\SysAmin.cs" />
+    <Compile Include="4.实体库\SysAdmin.cs" />
+    <Compile Include="SysAdminService.cs" />
     <Content Include="SQLite.Interop.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

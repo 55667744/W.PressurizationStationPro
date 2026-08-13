@@ -26,6 +26,6 @@ namespace W.PressurizationStationPro
         /// <summary>
         /// 当前登录的用户
         /// </summary>
-        public static SysAmin CurrentUser;
+        public static SysAdmin CurrentUser;
     }
 }
