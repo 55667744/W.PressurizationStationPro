@@ -351,6 +351,11 @@ namespace W.PressurizationStationPro
         public static extern bool LockWorkStation();
 
         #endregion
+
+        private void btn_UserLogin_Click(object sender, EventArgs e)
+        {
+            new FrmLagin().ShowDialog();
+        }
     }
 
 

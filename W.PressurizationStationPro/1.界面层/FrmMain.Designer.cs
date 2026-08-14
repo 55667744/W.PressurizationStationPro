@@ -313,6 +313,7 @@
             this.btn_UserLogin.TabIndex = 6;
             this.btn_UserLogin.Text = "用户登录";
             this.btn_UserLogin.UseVisualStyleBackColor = true;
+            this.btn_UserLogin.Click += new System.EventHandler(this.btn_UserLogin_Click);
             // 
             // label49
             // 

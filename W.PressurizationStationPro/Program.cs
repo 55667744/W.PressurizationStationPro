@@ -14,9 +14,19 @@ namespace W.PressurizationStationPro
         [STAThread]
         static void Main()
         {
+
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            string connStr = "Data Source=" + Application.StartupPath + "\\DataBase\\PressurizationStationProDateBase;" +
+           "Pooling=ture;FailllfMissing=false";
+
+            new SQLiteService().SrtConnectStr(connStr);
+
             Application.Run(new FrmMain());
+
+
         }
         /// <summary>
         /// 锁屏时间的滴答次数

@@ -132,10 +132,10 @@
     <Compile Include="1.界面层\FrmValveControl.Designer.cs">
       <DependentUpon>FrmValveControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmLagin.cs">
+    <Compile Include="1.界面层\FrmLagin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmLagin.Designer.cs">
+    <Compile Include="1.界面层\FrmLagin.Designer.cs">
       <DependentUpon>FrmLagin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -145,6 +145,7 @@
     <Compile Include="2.数据层\SysInfoService.cs" />
     <Compile Include="5.工具库\SQLiteHelper.cs" />
     <Compile Include="4.实体库\SysAdmin.cs" />
+    <Compile Include="SQLiteService.cs" />
     <Compile Include="SysAdminService.cs" />
     <Content Include="SQLite.Interop.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -167,7 +168,7 @@
     <EmbeddedResource Include="1.界面层\FrmValveControl.resx">
       <DependentUpon>FrmValveControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmLagin.resx">
+    <EmbeddedResource Include="1.界面层\FrmLagin.resx">
       <DependentUpon>FrmLagin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
