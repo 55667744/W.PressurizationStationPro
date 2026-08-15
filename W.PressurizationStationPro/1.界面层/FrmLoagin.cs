@@ -15,12 +15,12 @@ namespace W.PressurizationStationPro
         public FrmLoagin()
         {
             InitializeComponent();
-            //this.Load += FrmLogin_Load;
+            this.Load += FrmLogin_Load;
 
         }
 
 
-        private SysAdminService adminService =new SysAdminService();
+        private SysAdminService adminService =new SysAdminService();    //给登录窗口创建一个“用户服务助手”，后面查用户、验证登录都用它。
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {

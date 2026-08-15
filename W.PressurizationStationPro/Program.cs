@@ -20,7 +20,7 @@ namespace W.PressurizationStationPro
             Application.SetCompatibleTextRenderingDefault(false);
 
             string connStr = "Data Source=" + Application.StartupPath + "\\DataBase\\PressurizationStationProDateBase;" +
-           "Pooling=ture;FailllfMissing=false";
+           "Pooling=true;FailIfMissing=false";
 
             new SQLiteService().SrtConnectStr(connStr);
 
