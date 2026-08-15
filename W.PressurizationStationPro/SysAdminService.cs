@@ -26,13 +26,15 @@ namespace W.PressurizationStationPro
 
             while (dataReader.Read())                 //while循环的条件是刚刚上面创建的读工具类dataReader
             {
-                SysAdmin sysAdmin = new SysAdmin()     //循环体内部，创建sysadmin用户属性，然后获取当下“dataReader.Read()”给while循环的索引，取历遍这个索引的用户数据。
+                sysAdmins.Add(new SysAdmin()     //循环体内部，创建sysadmin用户属性，然后获取当下“dataReader.Read()”给while循环的索引，取历遍这个索引的用户数据。
                 {
                     LoginId = Convert.ToInt32(dataReader["LoginId"]),
                     LoginName = dataReader["LoginName"].ToString(),
                     LoginPwd = dataReader["Password"].ToString(),
                     RoleName = (RoleName)Enum.Parse(typeof(RoleName), dataReader["RoleName"].ToString())
-                };
+                }
+                
+                );
 
             }
             //关闭datareader

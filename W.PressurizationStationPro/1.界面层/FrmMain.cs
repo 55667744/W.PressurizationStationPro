@@ -354,7 +354,11 @@ namespace W.PressurizationStationPro
 
         private void btn_UserLogin_Click(object sender, EventArgs e)
         {
-            new FrmLagin().ShowDialog();
+           DialogResult  dialogResult= new FrmLoagin().ShowDialog();
+            if(dialogResult == DialogResult.OK)
+            {
+                this.lbl_User.Text = Program.CurrentUser.LoginName;
+            }
         }
     }
 

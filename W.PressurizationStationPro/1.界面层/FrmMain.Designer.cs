@@ -135,6 +135,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btn_ParamSet = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_User = new System.Windows.Forms.Label();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -1532,6 +1534,8 @@
             this.TopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(9)))), ((int)(((byte)(45)))));
             this.TopPanel.BackgroundImage = global::W.PressurizationStationPro.Properties.Resources.TopPanel;
             this.TopPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TopPanel.Controls.Add(this.lbl_User);
+            this.TopPanel.Controls.Add(this.label2);
             this.TopPanel.Controls.Add(this.lbl_Time);
             this.TopPanel.Controls.Add(this.button3);
             this.TopPanel.Controls.Add(this.button4);
@@ -1629,6 +1633,30 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "智慧加压站SCADA监控系统";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(12, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(155, 36);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "登录用户：";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lbl_User
+            // 
+            this.lbl_User.AutoSize = true;
+            this.lbl_User.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_User.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_User.Location = new System.Drawing.Point(155, 36);
+            this.lbl_User.Name = "lbl_User";
+            this.lbl_User.Size = new System.Drawing.Size(92, 36);
+            this.lbl_User.TabIndex = 7;
+            this.lbl_User.Text = "Guset";
+            this.lbl_User.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // FrmMain
             // 
@@ -1772,5 +1800,7 @@
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Button btn_Pump2;
         private AForge.Controls.VideoSourcePlayer vsp_Panel;
+        private System.Windows.Forms.Label lbl_User;
+        private System.Windows.Forms.Label label2;
     }
 }

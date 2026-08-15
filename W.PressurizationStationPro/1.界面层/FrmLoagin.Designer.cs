@@ -1,6 +1,6 @@
 ﻿namespace W.PressurizationStationPro
 {
-    partial class FrmLagin
+    partial class FrmLoagin
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLagin));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLoagin));
             this.MainPanel = new System.Windows.Forms.Panel();
             this.btn_Login = new System.Windows.Forms.Button();
             this.txt_Pwd = new System.Windows.Forms.TextBox();
@@ -85,6 +85,7 @@
             this.cmb_User.Name = "cmb_User";
             this.cmb_User.Size = new System.Drawing.Size(214, 44);
             this.cmb_User.TabIndex = 2;
+            this.cmb_User.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Pwd_KeyDown);
             // 
             // lbl_Close
             // 
@@ -96,6 +97,7 @@
             this.lbl_Close.Size = new System.Drawing.Size(40, 42);
             this.lbl_Close.TabIndex = 1;
             this.lbl_Close.Text = "X";
+            this.lbl_Close.Click += new System.EventHandler(this.lbl_Close_Click);
             // 
             // label1
             // 
