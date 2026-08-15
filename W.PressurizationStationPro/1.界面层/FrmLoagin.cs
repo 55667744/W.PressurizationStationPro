@@ -61,10 +61,10 @@ namespace W.PressurizationStationPro
             }
 
             //【2】封装对象
-            SysAdmin sysAdmin = new SysAdmin();
+            SysAdmin sysAdmin = new SysAdmin()
             {
-                LoginName = this.cmb_User.Text.Trim();
-                LoginPwd= this.txt_Pwd.Text.Trim();
+                LoginName = this.cmb_User.Text.Trim(),
+                LoginPwd= this.txt_Pwd.Text.Trim()
             };
 
             //【3】用户查询
