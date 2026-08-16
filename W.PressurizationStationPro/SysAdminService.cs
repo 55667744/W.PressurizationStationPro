@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace W.PressurizationStationPro
 {
     /// <summary>
-    /// 业务层：核心是方法
+    /// 业务层：核心是方法      数据访问服务
     /// </summary>
     public class SysAdminService
     {

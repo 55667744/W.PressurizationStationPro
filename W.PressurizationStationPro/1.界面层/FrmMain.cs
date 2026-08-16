@@ -77,7 +77,7 @@ namespace W.PressurizationStationPro
         //摄像头采集对象
         private CameraHelper camera = null;
 
-        //
+        //历史服务:把每个时间段的数据插入到数据库中的方法。
         private HistoryDataService historyService = new HistoryDataService();
 
         //把上次存储时间记录下来
@@ -189,7 +189,7 @@ namespace W.PressurizationStationPro
                                 PressureTankOut = data.Content.PressureTankOut.ToString("f2"),
                             });
                         }
-                        lasTime = DateTime.Now;
+                        lasTime = DateTime.Now;   // 这是这次扫描完的时间，赋值当前时间
 
                     }
                     else
