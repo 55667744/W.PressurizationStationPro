@@ -138,6 +138,8 @@
     <Compile Include="1.界面层\FrmLoagin.Designer.cs">
       <DependentUpon>FrmLoagin.cs</DependentUpon>
     </Compile>
+    <Compile Include="HistoryData.cs" />
+    <Compile Include="HistoryDataService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="3.通信层\S7NetLib.cs" />

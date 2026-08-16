@@ -16,7 +16,7 @@ namespace W.PressurizationStationPro
         ///获取所有用户对象
         public List<SysAdmin> QuerySysAdmins()         //创建了一个QuerySysAdmins方法，返回类型是SysAdmin的list集合
         {
-            string sql = "select LoginId,LoginName,LoginPwd,RoleName form SysAdmin";       //写一个查询用的sql语句在SysAdmin表中查询id用户属性用户密码
+            string sql = "select LoginId,LoginName,LoginPwd,RoleName from SysAdmin";       //写一个查询用的sql语句在SysAdmin表中查询id用户属性用户密码
 
             SQLiteDataReader dataReader = SQLiteHelper.ExecuteReader(sql);       //SQLiteDataReader是sqlite的官方查询工具类，和SQL Server的SqlDataReader一样，
                                                                                  //SQLiteHelper是一个数据库帮助类，.ExecuteReader(sql)这个是一个静态方法，获取一个可以
@@ -47,7 +47,7 @@ namespace W.PressurizationStationPro
              public SysAdmin AdminLogin(SysAdmin sysAdmin)    //创建一个AdminLogin方法返回类型为SysAdmin，输入为SysAdmin类型的参数：sysAdmin。
         {
             //[1]封装sql语句
-            string sql = "stelect LoginId,RoleName from SysAdmin where LoginName=@LoginName and LoginPwd=@LoginPwd";
+            string sql = "select LoginId,RoleName from SysAdmin where LoginName=@LoginName and LoginPwd=@LoginPwd";
 
             SQLiteParameter[] parameters = new SQLiteParameter[]         //new了一个SQLiteParameter集合parameters
              {
