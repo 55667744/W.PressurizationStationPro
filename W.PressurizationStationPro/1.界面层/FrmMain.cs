@@ -33,6 +33,59 @@ namespace W.PressurizationStationPro
            this.Load += FrmMain_Load;             //调用69行的方法绑定到窗体加载事件，他本身就是用户自定义方法，是一个系统加载方法。，里面有获取系统信息吧plc信息在加载winform的时候就读上来
             this.FormClosing += FrmMain_FormClosing;  
         }
+        #region 字段和属性
+        /// <summary>
+        /// 系统配置文件路径
+        /// </summary>
+        private string sysInfoPath = Application.StartupPath + "\\SysInfo.ini";                   //这里我不懂
+
+        /// <summary>
+        /// 系统配置文件的服务对象
+        /// </summary>
+        private SysInfoService infoService = new SysInfoService();    //这个我转到定义里面去看了，这是配置文件，里面是 PLC 的机槽号、通讯地址等内容。
+
+        /// <summary>
+        /// 系统配置对象                                ///这里有个很大的问题：sysInfo 和infoService这两个有什么区别？我看里面都是通讯相关的内容，还有机槽、PLC 相关的东西，不理解为什么会有两个这样的对象。
+        /// </summary>
+        private SysInfo sysInfo = new SysInfo();      //这个是系统配置对象，里面有plc的ip地址，端口号，连接方式等信息，
+                                                      //好像是当时老师让我写的一个类，里面有很多属性，都是系统配置相关的，
+                                                      //这个在实际运用中应该是填写plc的相关信息
+
+        /// <summary>
+        /// 多线程取消源
+        /// </summary>
+        private CancellationTokenSource cts;        //CancellationTokenSource这个我不太懂，查了一下是取消令牌，cts是这个类的实例。
+
+        private PlcDataservice dataService = new PlcDataservice();     // 这里很关键，这里new了一个PLC数据服务对象，dataservice
+                                                                       //  里面有很多方法和属性，主要是和PLC通信的逻辑
+
+
+
+        private Timer updateTimer = new Timer();           //这里定义了一个计时器的类实例，在这个main函数里面的最上面有调用过它
+
+        /// <summary>
+        /// 第一次扫描标志位                                       //这里的第一次扫描标志位是什么？扫描标志位是程序启动第一次扫描标志位吗？从上到下。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private bool FirsScan = true;
+
+        private MessageFilter messageFilter;                        //这是一个消息筛选器的一个实例在这个main函数的最下面。
+
+        private DateTime LoginTime = DateTime.Now;  //第一次扫描的登录的时间   这里 data team 它不是时间长度，是一个时间点。
+
+        //摄像头采集对象
+        private CameraHelper camera = null;
+
+        //
+        private HistoryDataService historyService = new HistoryDataService();
+
+        //把上次存储时间记录下来
+        public DateTime lasTime=DateTime.Now;
+
+        #endregion
+
+
 
         private void updataTimer_Tick(object sender, EventArgs e)     //这是一个定时器点击事件，里面有一个方法是获取系统信息的方法
         {
@@ -46,7 +99,7 @@ namespace W.PressurizationStationPro
             {                                                  
                 Program.TickCount++;                //program是c#系统运行的主程序里面有一个tickcount属性，自增加代表记录无操作时间（这里有个疑问，为什么不直接拿ScreenTime判断）
                 if (sysInfo.ScreenTime*1000/this.updateTimer.Interval==Program.TickCount)
-                {   //系统无操作时间*1000除系统设置的500间隔，是否等于program自增加的数字，(这里不懂到时候问claude)
+                {   //系统无操作时间*1000除系统设置的500间隔，是否等于program自增加的数字，(这里不懂到时候问ai)
                     //锁屏调用Windows底层API
                     LockWorkStation();   
                 }
@@ -115,10 +168,29 @@ namespace W.PressurizationStationPro
                         dataService.ErrorTimes = 0;            // 操作成功通讯错误次数清零
                         //更新    
                         this.UpdateUIData(data.Content);  //data是刚才读到的plc数据，然后他为什么调用content？我转定义显示是数据，应该是plc数据作为updateuidata更新页面的参数
-                        //逻辑
 
+                        //数据存储 1s  扫描周期小于1s
+                        int timeSpan = DateTime.Now.Second - lasTime.Second;
 
-                        //数据存储
+                        if(timeSpan==1||timeSpan==-59)
+                        {
+                            historyService.AddHistoryData(new HistoryData()
+                            {
+                                InsertTime = DateTime.Now,
+                                PressureIn = data.Content.PressureIn.ToString("f2"),
+                                PressureOut = data.Content.PressureOut.ToString("f2"),
+                                TempIn1 = data.Content.TempIn1.ToString("f2"),
+                                TempIn2 = data.Content.TempIn2.ToString("f2"),
+                                TempOut = data.Content.TempOut.ToString("f2"),
+                                PressureTank1 = data.Content.PressureTank1.ToString("f2"),
+                                PressureTank2 = data.Content.PressureTank2.ToString("f2"),
+                                LevelTank1 = data.Content.LevelTank1.ToString("f2"),
+                                LevelTank2 = data.Content.LevelTank2.ToString("f2"),
+                                PressureTankOut = data.Content.PressureTankOut.ToString("f2"),
+                            });
+                        }
+                        lasTime = DateTime.Now;
+
                     }
                     else
                     {
@@ -155,50 +227,7 @@ namespace W.PressurizationStationPro
                 }                                                
             }
         }
-
-        /// <summary>
-        /// 系统配置文件路径
-        /// </summary>
-        private string sysInfoPath = Application.StartupPath + "\\SysInfo.ini";                   //这里我不懂
-
-        /// <summary>
-        /// 系统配置文件的服务对象
-        /// </summary>
-        private SysInfoService infoService = new SysInfoService();    //这个我转到定义里面去看了，这是配置文件，里面是 PLC 的机槽号、通讯地址等内容。
-
-        /// <summary>
-        /// 系统配置对象                                ///这里有个很大的问题：sysInfo 和infoService这两个有什么区别？我看里面都是通讯相关的内容，还有机槽、PLC 相关的东西，不理解为什么会有两个这样的对象。
-        /// </summary>
-        private SysInfo sysInfo = new SysInfo();      //这个是系统配置对象，里面有plc的ip地址，端口号，连接方式等信息，
-                                                                                           //好像是当时老师让我写的一个类，里面有很多属性，都是系统配置相关的，
-                                                                                           //这个在实际运用中应该是填写plc的相关信息
-
-        /// <summary>
-        /// 多线程取消源
-        /// </summary>
-        private CancellationTokenSource cts;        //CancellationTokenSource这个我不太懂，查了一下是取消令牌，cts是这个类的实例。
-
-        private PlcDataservice dataService = new PlcDataservice();     // 这里很关键，这里new了一个PLC数据服务对象，dataservice
-                                                                                                               //  里面有很多方法和属性，主要是和PLC通信的逻辑
-
-
-
-        private Timer updateTimer = new Timer();           //这里定义了一个计时器的类实例，在这个main函数里面的最上面有调用过它
-
-        /// <summary>
-        /// 第一次扫描标志位                                       //这里的第一次扫描标志位是什么？扫描标志位是程序启动第一次扫描标志位吗？从上到下。
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private bool FirsScan=true;
-
-        private MessageFilter messageFilter;                        //这是一个消息筛选器的一个实例在这个main函数的最下面。
-
-        private DateTime LoginTime=DateTime.Now;  //第一次扫描的登录的时间   这里 data team 它不是时间长度，是一个时间点。
-
-        //摄像头采集对象
-        private CameraHelper camera = null;
-
+    
         private void btn_ParamSet_Click(object sender, EventArgs e)
         {
             new FrmParamSre(this.sysInfo, this.infoService, this.sysInfoPath).ShowDialog();

@@ -23,7 +23,7 @@ namespace W.PressurizationStationPro
 
             SQLiteParameter[] parameters = new SQLiteParameter[]
             {
-                new SQLiteParameter("@InsertTime", historyData.InsertTime),
+                new SQLiteParameter("@InsertTime", historyData.InsertTime.ToString("yyy-MM-dd HH:mm:ss")),
                 new SQLiteParameter("@PressureIn", historyData.PressureIn),
                 new SQLiteParameter("@PressureOut", historyData.PressureOut),
                 new SQLiteParameter("@TempIn1", historyData.TempIn1),
@@ -36,8 +36,8 @@ namespace W.PressurizationStationPro
                 new SQLiteParameter("@PressureTankOut", historyData.PressureTankOut),
             };
 
-            return SQLiteHelper.ExecuteNonQuery(sql, parameters) == 1;
-        }
+            return SQLiteHelper.ExecuteNonQuery(sql, parameters) == 1;  //SQLiteHelper类中的ExecuteNonQuery方法执行写入数据库，输入参数sql是写入语法，parameters是要写入数据的集合
+        }                                                               //ExecuteNonQuery的返回值是 受影响的行数（int 类型）成功插入 1 条 记录时，它会返回数字 1
 
     }
 }
