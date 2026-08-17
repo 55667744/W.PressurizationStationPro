@@ -75,6 +75,9 @@
     <Reference Include="AForge.Video.FFMPEG">
       <HintPath>..\lib\AForge.Video.FFMPEG.dll</HintPath>
     </Reference>
+    <Reference Include="MiniExcel">
+      <HintPath>obj\Debug\MiniExcel.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite">
@@ -138,12 +141,13 @@
     <Compile Include="1.界面层\FrmLoagin.Designer.cs">
       <DependentUpon>FrmLoagin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmHistory.cs">
+    <Compile Include="1.界面层\FrmHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmHistory.Designer.cs">
+    <Compile Include="1.界面层\FrmHistory.Designer.cs">
       <DependentUpon>FrmHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataGridViewHelper.cs" />
     <Compile Include="HistoryData.cs" />
     <Compile Include="HistoryDataService.cs" />
     <Compile Include="Program.cs" />
@@ -179,7 +183,7 @@
     <EmbeddedResource Include="1.界面层\FrmLoagin.resx">
       <DependentUpon>FrmLoagin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmHistory.resx">
+    <EmbeddedResource Include="1.界面层\FrmHistory.resx">
       <DependentUpon>FrmHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

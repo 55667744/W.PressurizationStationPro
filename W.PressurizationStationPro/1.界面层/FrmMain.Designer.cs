@@ -129,14 +129,14 @@
             this.meter_PressureIn = new xbd.ControlLib.xbdAnalogMeter();
             this.meterShow3 = new W.PressurizationStationPro.MeterShow();
             this.TopPanel = new System.Windows.Forms.Panel();
+            this.lbl_User = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lbl_Time = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_History = new System.Windows.Forms.Button();
             this.btn_ParamSet = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbl_User = new System.Windows.Forms.Label();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -1539,7 +1539,7 @@
             this.TopPanel.Controls.Add(this.lbl_Time);
             this.TopPanel.Controls.Add(this.button3);
             this.TopPanel.Controls.Add(this.button4);
-            this.TopPanel.Controls.Add(this.button2);
+            this.TopPanel.Controls.Add(this.btn_History);
             this.TopPanel.Controls.Add(this.btn_ParamSet);
             this.TopPanel.Controls.Add(this.label1);
             this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1548,6 +1548,30 @@
             this.TopPanel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TopPanel.Size = new System.Drawing.Size(1280, 63);
             this.TopPanel.TabIndex = 0;
+            // 
+            // lbl_User
+            // 
+            this.lbl_User.AutoSize = true;
+            this.lbl_User.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_User.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_User.Location = new System.Drawing.Point(155, 36);
+            this.lbl_User.Name = "lbl_User";
+            this.lbl_User.Size = new System.Drawing.Size(92, 36);
+            this.lbl_User.TabIndex = 7;
+            this.lbl_User.Text = "Guset";
+            this.lbl_User.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(12, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(155, 36);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "登录用户：";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lbl_Time
             // 
@@ -1592,20 +1616,21 @@
             this.button4.Text = "数据报表";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btn_History
             // 
-            this.button2.BackgroundImage = global::W.PressurizationStationPro.Properties.Resources.Border;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(103, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(88, 28);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "历史记录";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_History.BackgroundImage = global::W.PressurizationStationPro.Properties.Resources.Border;
+            this.btn_History.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_History.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_History.FlatAppearance.BorderSize = 0;
+            this.btn_History.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_History.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_History.Location = new System.Drawing.Point(103, 5);
+            this.btn_History.Name = "btn_History";
+            this.btn_History.Size = new System.Drawing.Size(88, 28);
+            this.btn_History.TabIndex = 2;
+            this.btn_History.Text = "历史记录";
+            this.btn_History.UseVisualStyleBackColor = true;
+            this.btn_History.Click += new System.EventHandler(this.button2_Click);
             // 
             // btn_ParamSet
             // 
@@ -1633,30 +1658,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "智慧加压站SCADA监控系统";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(12, 36);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(155, 36);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "登录用户：";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lbl_User
-            // 
-            this.lbl_User.AutoSize = true;
-            this.lbl_User.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_User.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbl_User.Location = new System.Drawing.Point(155, 36);
-            this.lbl_User.Name = "lbl_User";
-            this.lbl_User.Size = new System.Drawing.Size(92, 36);
-            this.lbl_User.TabIndex = 7;
-            this.lbl_User.Text = "Guset";
-            this.lbl_User.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // FrmMain
             // 
@@ -1698,7 +1699,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Button btn_ParamSet;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_History;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private MeterShow meterShow3;

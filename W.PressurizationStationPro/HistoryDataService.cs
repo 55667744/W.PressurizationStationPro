@@ -4,6 +4,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using xbd.DataConvertLib;
 
 namespace W.PressurizationStationPro
 {
@@ -39,5 +40,55 @@ namespace W.PressurizationStationPro
             return SQLiteHelper.ExecuteNonQuery(sql, parameters) == 1;  //SQLiteHelper类中的ExecuteNonQuery方法执行写入数据库，输入参数sql是写入语法，parameters是要写入数据的集合
         }                                                               //ExecuteNonQuery的返回值是 受影响的行数（int 类型）成功插入 1 条 记录时，它会返回数字 1
 
+
+
+        /// <summary>
+        /// 根据开始时间和结束时间进行查询
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public OperateResult<List<HistoryData>> GetHistoryDataByTime(DateTime start, DateTime end)
+        {
+            string sql = "Select InsertTime,PressureIn,PressureOut,TempIn1,TempIn2,TempOut,PressureTank1,PressureTank2," +
+                "LevelTank1,LevelTank2,PressureTankOut from HistoryData where InsertTime between @Start and @End";
+
+            SQLiteParameter[] parameters = new SQLiteParameter[]
+            {
+        new SQLiteParameter("@Start", start),
+        new SQLiteParameter("@End", end),
+            };
+
+            try
+            {
+                SQLiteDataReader dataReader = SQLiteHelper.ExecuteReader(sql, parameters);
+
+                List<HistoryData> historyDatas = new List<HistoryData>();
+
+                while (dataReader.Read())
+                {
+                    historyDatas.Add(new HistoryData()
+                    {
+                        InsertTime = Convert.ToDateTime(dataReader["InsertTime"]),
+                        PressureIn = dataReader["PressureIn"].ToString(),
+                        PressureOut = dataReader["PressureOut"].ToString(),
+                        TempIn1 = dataReader["TempIn1"].ToString(),
+                        TempIn2 = dataReader["TempIn2"].ToString(),
+                        TempOut = dataReader["TempOut"].ToString(),
+                        PressureTank1 = dataReader["PressureTank1"].ToString(),
+                        PressureTank2 = dataReader["PressureTank2"].ToString(),
+                        LevelTank1 = dataReader["LevelTank1"].ToString(),
+                        LevelTank2 = dataReader["LevelTank2"].ToString(),
+                        PressureTankOut = dataReader["PressureTankOut"].ToString(),
+                    });
+                }
+                dataReader.Close();
+                return OperateResult.CreateSuccessResult(historyDatas);
+            }
+            catch (Exception ex)
+            {
+                return OperateResult.CreateFailResult<List<HistoryData>>(ex.Message);
+            }
+        }
     }
 }

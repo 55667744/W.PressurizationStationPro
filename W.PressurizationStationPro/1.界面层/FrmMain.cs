@@ -389,6 +389,11 @@ namespace W.PressurizationStationPro
                 this.lbl_User.Text = Program.CurrentUser.LoginName;
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            new FrmHistory().ShowDialog();
+        }
     }
 
 
